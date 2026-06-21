@@ -148,7 +148,7 @@ $skipped  = 0;
 $errors   = [];
 
 $sql = "INSERT INTO products
-    (name, slug, description, price, sale_price, image, category_id, active, featured, affiliate_url, created_at)
+    (name, slug, description, price, compare_at_price, image, category_id, active, featured, affiliate_url, created_at)
     VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?, NULL, NOW())
     ON DUPLICATE KEY UPDATE name=name"; // skip duplicates silently
 
@@ -160,13 +160,16 @@ foreach ($products as $p) {
         $errors[] = "No category ID for '{$p['category']}' (product: {$p['name']})";
         continue;
     }
+    // sale_price = actual current price, original = compare_at_price
+    $price            = $p['sale_price'] ?? $p['price'];
+    $compare_at_price = $p['sale_price'] ? $p['price'] : null;
     try {
         $stmt->execute([
             $p['name'],
             $p['slug'],
             $p['description'],
-            $p['price'],
-            $p['sale_price'],
+            $price,
+            $compare_at_price,
             $p['image'],
             $cat_id,
             $p['featured'],
