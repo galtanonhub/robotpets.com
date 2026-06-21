@@ -9,7 +9,10 @@ $stmt->execute([$slug]);
 $post = $stmt->fetch();
 if (!$post) { include __DIR__ . '/404.php'; exit; }
 
-$title = $post['title'];
+$title       = $post['title'];
+$description = $post['excerpt'] ? mb_substr(strip_tags($post['excerpt']), 0, 155) : mb_substr(strip_tags($post['body'] ?? ''), 0, 155);
+$og_image    = $post['image'] ?: null;
+$canonical   = SITE_URL . '/blog-post.php?slug=' . urlencode($post['slug']);
 include __DIR__ . '/includes/header.php';
 ?>
 
