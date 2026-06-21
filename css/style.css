@@ -438,3 +438,45 @@ img { max-width: 100%; display: block; }
 .post-page-body a:hover { text-decoration: underline; }
 .post-page-body img { border-radius: var(--radius); margin: 1.5rem 0; max-width: 100%; }
 .post-page-body strong { color: var(--text); }
+
+/* ---------- Reviews ---------- */
+.reviews-wrap { max-width: 760px; }
+.reviews-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+.reviews-header h2 { font-family: var(--font-display); font-size: 1.5rem; }
+.rating-bar { display: flex; align-items: center; gap: .6rem; }
+.rating-summary { display: flex; align-items: center; gap: .6rem; margin-bottom: .5rem; }
+.rating-summary .rating-count { color: var(--text-dim); font-size: .88rem; }
+.rating-summary .rating-avg { font-weight: 700; }
+.stars-display { color: var(--accent); letter-spacing: 2px; font-size: 1rem; }
+.stars-lg { font-size: 1.4rem; }
+
+.review-list { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 2.5rem; }
+.review-card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.4rem; }
+.review-meta { display: flex; align-items: center; gap: .75rem; margin-bottom: .6rem; flex-wrap: wrap; }
+.review-meta strong { font-size: .97rem; }
+.review-date { color: var(--text-dim); font-size: .82rem; margin-left: auto; }
+.review-card p { color: var(--text-dim); line-height: 1.65; font-size: .95rem; }
+.review-empty { color: var(--text-dim); margin-bottom: 2rem; }
+
+.review-form-wrap { border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 1rem; }
+.review-form-wrap h3 { font-family: var(--font-display); font-size: 1.15rem; margin-bottom: 1.25rem; }
+.review-form label { display: flex; flex-direction: column; gap: .35rem; margin-bottom: 1rem; font-size: .9rem; color: var(--text-dim); }
+.review-form input[type=text], .review-form input[type=email] {
+  background: var(--bg-soft); border: 1px solid var(--border); color: var(--text);
+  padding: .65rem .9rem; border-radius: 9px; font-size: .97rem; outline: none; transition: border-color .2s;
+}
+.review-form input:focus { border-color: var(--accent); }
+.review-form textarea { background: var(--bg-soft); border: 1px solid var(--border); color: var(--text); padding: .65rem .9rem; border-radius: 9px; font-size: .97rem; outline: none; width: 100%; resize: vertical; font-family: var(--font-body); transition: border-color .2s; }
+.review-form textarea:focus { border-color: var(--accent); }
+.review-note { color: var(--text-dim); font-size: .82rem; margin-top: .6rem; }
+.review-thanks { color: #4ade80; font-weight: 600; padding: 1rem; background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.25); border-radius: 9px; }
+
+/* Star rating radio input */
+.star-rating-field { border: none; padding: 0; margin: 0 0 1rem; }
+.star-rating-field legend { font-size: .9rem; color: var(--text-dim); margin-bottom: .5rem; }
+.star-radio-group { display: flex; flex-direction: row-reverse; gap: .15rem; }
+.star-radio-group input[type=radio] { display: none; }
+.star-radio-group label { font-size: 1.8rem; color: var(--border); cursor: pointer; transition: color .15s; }
+.star-radio-group input:checked ~ label,
+.star-radio-group label:hover,
+.star-radio-group label:hover ~ label { color: var(--accent); }
