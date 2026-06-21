@@ -9,6 +9,20 @@ $featured   = db()->query(
 
 $categories = db()->query('SELECT * FROM categories ORDER BY name')->fetchAll();
 
+// Products grouped by category for tab switcher (exclude accessories)
+$byCategory = [];
+foreach ($categories as $c) {
+    if ($c['slug'] === 'accessories-parts') continue;
+    $stmt = db()->prepare(
+        "SELECT p.*, c.name AS category_name, c.slug AS category_slug FROM products p
+         LEFT JOIN categories c ON c.id = p.category_id
+         WHERE p.active = 1 AND p.category_id = ? ORDER BY p.created_at DESC LIMIT 8"
+    );
+    $stmt->execute([$c['id']]);
+    $prods = $stmt->fetchAll();
+    if ($prods) $byCategory[] = ['cat' => $c, 'products' => $prods];
+}
+
 // Use pinned hero product if set, otherwise fall back to first featured
 $heroStmt = db()->query(
     "SELECT p.*, c.name AS category_name, c.slug AS category_slug FROM products p
@@ -144,6 +158,46 @@ include __DIR__ . '/includes/header.php';
     <?php foreach ($featured as $p) include __DIR__ . '/includes/product-card.php'; ?>
   </div>
 </section>
+
+<!-- Shop by Category tabs -->
+<?php if ($byCategory): ?>
+<section class="section container shop-tabs-section">
+  <div class="section-head">
+    <h2>Shop by Category</h2>
+    <a href="/shop.php" class="link-arrow">View all →</a>
+  </div>
+  <div class="tab-bar">
+    <?php foreach ($byCategory as $i => $group): ?>
+      <button class="tab-btn <?= $i === 0 ? 'active' : '' ?>" data-tab="<?= h($group['cat']['slug']) ?>">
+        <?= $cat_icons[$group['cat']['slug']] ?? '🤖' ?> <?= h($group['cat']['name']) ?>
+      </button>
+    <?php endforeach; ?>
+  </div>
+  <div class="tab-panels">
+    <?php foreach ($byCategory as $i => $group): ?>
+      <div class="tab-panel <?= $i === 0 ? 'active' : '' ?>" id="tab-<?= h($group['cat']['slug']) ?>">
+        <div class="tab-product-row">
+          <?php foreach ($group['products'] as $p) include __DIR__ . '/includes/product-card.php'; ?>
+        </div>
+      </div>
+    <?php endforeach; ?>
+  </div>
+</section>
+<script>
+(function(){
+  var btns   = document.querySelectorAll('.tab-btn');
+  var panels = document.querySelectorAll('.tab-panel');
+  btns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      btns.forEach(function(b){ b.classList.remove('active'); });
+      panels.forEach(function(p){ p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+})();
+</script>
+<?php endif; ?>
 
 <!-- Who is this for -->
 <section class="section container audience-strip">
