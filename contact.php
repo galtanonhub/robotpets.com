@@ -68,7 +68,7 @@ include __DIR__ . '/includes/header.php';
           <span class="channel-icon">📦</span>
           <div>
             <strong>Returns &amp; warranty</strong>
-            <span>30-day returns · 1-year warranty on all products</span>
+            <span>Policies vary by vendor — check the seller's page for details</span>
           </div>
         </div>
       </div>

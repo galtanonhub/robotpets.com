@@ -1,7 +1,7 @@
-﻿<?php
+<?php
 require_once __DIR__ . '/includes/functions.php';
 $title = 'FAQ';
-$description = 'Answers to common questions about RobotPets — battery life, shipping, returns, warranties, allergies, and more.';
+$description = 'Answers to common questions about robotic pets — battery life, how they work, who they\'re for, and how to buy.';
 include __DIR__ . '/includes/header.php';
 ?>
 
@@ -15,45 +15,31 @@ include __DIR__ . '/includes/header.php';
 <section class="section container faq-wrap">
 
   <div class="faq-group">
-    <h2 class="faq-group-title">Shopping &amp; Orders</h2>
+    <h2 class="faq-group-title">How RobotPets Works</h2>
+
+    <details class="faq-item">
+      <summary>Do you sell these products directly?</summary>
+      <p>No — RobotPets is a curated guide and review site. When you click "Check Price" on any product, you'll be taken directly to the retailer's website to complete your purchase. This means you're buying from the actual seller, with their pricing, shipping, and return policies.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Who are the vendors you link to?</summary>
+      <p>We link to established retailers and brand websites that sell robotic companions. We vet each vendor before featuring their products. The vendor is clearly identified on the retailer's product page once you click through.</p>
+    </details>
 
     <details class="faq-item">
       <summary>How do I place an order?</summary>
-      <p>Browse the <a href="/shop.php">shop</a>, add any items you like to your cart, then head to checkout. We accept all major credit and debit cards. You'll receive a confirmation email once your order is placed.</p>
+      <p>Click the "Check Price →" button on any product page. You'll be taken to the seller's website where you can add the item to their cart and check out directly with them.</p>
     </details>
 
     <details class="faq-item">
-      <summary>Can I change or cancel my order after placing it?</summary>
-      <p>Contact us at <a href="mailto:support@robotpets.com">support@robotpets.com</a> as soon as possible. We process orders quickly, but if your order hasn't shipped yet we can usually make changes or cancel it for a full refund.</p>
+      <summary>What are the shipping and return policies?</summary>
+      <p>Policies vary by vendor. Check the retailer's website for their current shipping times, costs, and return window before purchasing. If you have questions about a specific order, contact the retailer directly.</p>
     </details>
 
     <details class="faq-item">
-      <summary>Do you offer gift wrapping or gift messages?</summary>
-      <p>Yes — add a note in the order comments at checkout and we'll include a handwritten gift message. Gift-ready packaging is available for an additional fee; just mention it in your note and we'll confirm the cost by email.</p>
-    </details>
-
-    <details class="faq-item">
-      <summary>Are your prices in USD?</summary>
-      <p>Yes, all prices are in US dollars. International customers will see the conversion handled by their card issuer at checkout.</p>
-    </details>
-  </div>
-
-  <div class="faq-group">
-    <h2 class="faq-group-title">Shipping &amp; Returns</h2>
-
-    <details class="faq-item">
-      <summary>Do you ship worldwide?</summary>
-      <p>Yes — we ship to most countries. Free shipping is included on every order, no minimum required. Delivery times vary by destination: 3–5 business days domestically, 7–14 days internationally.</p>
-    </details>
-
-    <details class="faq-item">
-      <summary>What is your return policy?</summary>
-      <p>We offer a 30-day return window from the date of delivery. Items must be in original condition with all packaging. To start a return, email <a href="mailto:support@robotpets.com">support@robotpets.com</a> with your order number and we'll send you a prepaid label.</p>
-    </details>
-
-    <details class="faq-item">
-      <summary>My order arrived damaged. What do I do?</summary>
-      <p>We're sorry to hear that. Please take a photo of the damage and email it to <a href="mailto:support@robotpets.com">support@robotpets.com</a> within 7 days of delivery. We'll arrange a replacement or full refund immediately — no questions asked.</p>
+      <summary>Are your prices accurate?</summary>
+      <p>We do our best to keep prices up to date, but vendors may change their pricing at any time. The price shown on the retailer's checkout is always the authoritative one.</p>
     </details>
   </div>
 
@@ -62,32 +48,32 @@ include __DIR__ . '/includes/header.php';
 
     <details class="faq-item">
       <summary>Are robotic pets safe for children?</summary>
-      <p>Most of our companions are designed for ages 3 and up. Each product page clearly states the recommended age range. Pets designed for kids have no small detachable parts and use child-safe materials. We also carry models specifically suited for very young children.</p>
+      <p>Most companions are designed for ages 3 and up. Check the product page for the recommended age range. Models made for kids use child-safe materials and have no small detachable parts.</p>
     </details>
 
     <details class="faq-item">
       <summary>Are they truly hypoallergenic?</summary>
-      <p>Yes. Robotic pets have no fur, no dander, no saliva, and no shedding — so they are completely safe for people with pet allergies. They are also non-toxic and safe for households with both people and real animals.</p>
+      <p>Yes. Robotic pets have no fur, no dander, no saliva, and no shedding — completely safe for people with pet allergies. They are also non-toxic and safe for households with real animals.</p>
     </details>
 
     <details class="faq-item">
       <summary>How long does the battery last?</summary>
-      <p>Battery life varies by model but most companions run 2–6 hours on a full charge and recharge in 1–3 hours. Many models enter a low-power "sleep" mode when not interacted with to extend playtime. Battery specs are listed on each product page.</p>
+      <p>Battery life varies by model but most companions run 2–6 hours on a full charge and recharge in 1–4 hours via USB-C. Many models enter a low-power sleep mode when not interacted with to extend playtime. Specs are listed on each product page.</p>
     </details>
 
     <details class="faq-item">
       <summary>Do they need Wi-Fi or an app to work?</summary>
-      <p>Entry-level models work completely standalone — no app, no Wi-Fi required. Advanced AI models may offer optional companion apps for added features (custom commands, firmware updates, personality tuning), but core functions always work out of the box.</p>
+      <p>Most models work completely standalone — no app or Wi-Fi required. Some advanced models offer optional companion apps for extra features, but core functions always work out of the box.</p>
     </details>
 
     <details class="faq-item">
       <summary>Can robotic pets learn and remember things over time?</summary>
-      <p>AI-enhanced models do learn. They can remember your name, recognize your voice, pick up on your daily routines, and develop a unique personality shaped by how you interact with them. Entry-level models have fixed behaviors but are still highly responsive to touch and sound.</p>
+      <p>Some models can. Voice-interactive companions like the Percy series can learn your name and respond to commands. Entry-level models have fixed behaviors but are still highly responsive to touch and sound.</p>
     </details>
 
     <details class="faq-item">
       <summary>Are they suitable for elderly people in care homes?</summary>
-      <p>Absolutely — this is one of our most popular use cases. Our companions require no feeding, no cleaning, and no veterinary care. They respond to gentle touch and provide consistent, calm companionship. Many care facilities use robotic pets as part of therapeutic programs for residents with dementia or social isolation.</p>
+      <p>Absolutely — this is one of the most popular use cases. Robotic companions require no feeding, cleaning, or veterinary care. They respond to gentle touch and provide consistent, calm companionship. Many care facilities use them in therapeutic programs for residents with dementia or social isolation.</p>
     </details>
   </div>
 
@@ -95,18 +81,18 @@ include __DIR__ . '/includes/header.php';
     <h2 class="faq-group-title">Warranty &amp; Support</h2>
 
     <details class="faq-item">
-      <summary>What does the 1-year warranty cover?</summary>
-      <p>All pets come with a 1-year limited warranty covering manufacturing defects, electronic failures, and motor issues under normal use. It does not cover physical damage from drops, water exposure, or unauthorized modifications. Extended warranty options are available at checkout.</p>
+      <summary>What warranty comes with these products?</summary>
+      <p>Warranty terms vary by brand and model — check the product listing on the retailer's site for specifics. Many Chongker products, for example, include a 1-year manufacturer warranty covering defects and electronic failures.</p>
     </details>
 
     <details class="faq-item">
-      <summary>My pet isn't behaving the way I expect. How do I get help?</summary>
-      <p>Start with the troubleshooting guide included in the box. If that doesn't resolve it, reach out through our <a href="/contact.php">contact page</a> or email <a href="mailto:support@robotpets.com">support@robotpets.com</a>. Our team typically responds within 24 hours on business days.</p>
+      <summary>My pet isn't working as expected. Who do I contact?</summary>
+      <p>For product issues, contact the retailer or manufacturer you purchased from directly — they handle warranty claims and technical support. If you need help finding the right contact, reach out to us via the <a href="/contact.php">contact page</a> and we'll point you in the right direction.</p>
     </details>
 
     <details class="faq-item">
       <summary>Can I get replacement parts?</summary>
-      <p>Yes, for most models. Common replacement parts (charging cables, covers, batteries) are listed in our <a href="/shop.php?category=accessories-parts">Accessories section</a>. For parts not listed, contact support and we'll source them for you.</p>
+      <p>Many brands offer replacement accessories like charging cables. Check our <a href="/shop.php?category=accessories-parts">Accessories section</a> or the brand's own website for available parts.</p>
     </details>
   </div>
 

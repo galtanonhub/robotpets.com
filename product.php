@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['form'] ?? '') === 'review'
 }
 
 $title       = $product['name'];
-$description = mb_substr(strip_tags($product['description'] ?? ''), 0, 155) ?: 'Shop ' . $product['name'] . ' at RobotPets — lifelike robotic companion with free shipping and 1-year warranty.';
+$description = mb_substr(strip_tags($product['description'] ?? ''), 0, 155) ?: 'Shop ' . $product['name'] . ' at RobotPets — lifelike robotic companion.';
 $og_image    = !empty($product['image']) ? $product['image'] : null;
 $og_type     = 'product';
 $canonical   = SITE_URL . '/product.php?slug=' . urlencode($product['slug']);
@@ -114,11 +114,6 @@ include __DIR__ . '/includes/header.php';
       <?php else: ?>
         <p class="stock-status" style="color:var(--text-dim);">Availability coming soon</p>
       <?php endif; ?>
-      <ul class="product-perks">
-        <li>🚚 Free worldwide shipping</li>
-        <li>↩️ 30-day no-questions returns</li>
-        <li>🛡 1-year warranty included</li>
-      </ul>
     </div>
   </div>
 
