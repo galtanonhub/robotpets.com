@@ -42,6 +42,13 @@
           <a href="/blog.php">Blog &amp; News</a>
         </div>
       </div>
+      <div class="nav-dropdown">
+        <a href="/gallery.php" class="nav-drop-trigger">Community ▾</a>
+        <div class="nav-drop-menu">
+          <a href="/gallery.php">Owner Gallery</a>
+          <a href="/find-my-pet.php">Pet Finder Quiz</a>
+        </div>
+      </div>
       <a href="/about.php">About</a>
       <a href="/faq.php">FAQ</a>
     </div>
