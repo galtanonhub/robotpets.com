@@ -104,13 +104,6 @@ include __DIR__ . '/includes/header.php';
 
   </div>
 
-  <!-- Trust bar -->
-  <div class="hero-trust">
-    <div class="hero-trust-item"><strong>Free Shipping</strong><span>On every order, worldwide</span></div>
-    <div class="hero-trust-item"><strong>30-Day Returns</strong><span>Love it or send it back</span></div>
-    <div class="hero-trust-item"><strong>1-Year Warranty</strong><span>Every companion covered</span></div>
-    <div class="hero-trust-item"><strong>Secure Checkout</strong><span>Encrypted end to end</span></div>
-  </div>
 
 </section>
 
