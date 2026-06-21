@@ -439,11 +439,12 @@ main { padding-top: 68px; }
 .mobile-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 200; }
 .mobile-overlay.open { display: block; }
 .mobile-drawer {
-  position: fixed; top: 0; right: -300px; width: 280px; height: 100vh;
+  position: fixed; top: 0; right: 0; width: 280px; height: 100vh;
   background: var(--bg-soft); border-left: 1px solid var(--border);
-  z-index: 201; transition: right .26s ease; overflow-y: auto;
+  z-index: 201; transition: transform .26s ease; overflow-y: auto;
+  transform: translateX(100%);
 }
-.mobile-drawer.open { right: 0; }
+.mobile-drawer.open { transform: translateX(0); }
 .mobile-drawer-head { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); height: 68px; }
 .mobile-drawer-close { background: none; border: none; color: var(--text-dim); font-size: 1.8rem; cursor: pointer; line-height: 1; padding: 0; }
 .mobile-drawer-body { padding: .5rem 0 2rem; }
