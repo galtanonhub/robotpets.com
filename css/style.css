@@ -467,6 +467,7 @@ main { padding-top: 68px; }
   .cat-strip { grid-template-columns: repeat(2, 1fr); }
   .cat-strip-tile:nth-child(even) { border-right: none; }
   .nav-hamburger { display: flex; }
+  .nav-search { display: none; }
 }
 
 /* ---------- Blog / Learn listing ---------- */
