@@ -173,6 +173,11 @@ include __DIR__ . '/includes/header.php';
       </button>
     <?php endforeach; ?>
   </div>
+  <select class="tab-select">
+    <?php foreach ($byCategory as $i => $group): ?>
+      <option value="<?= h($group['cat']['slug']) ?>"><?= $cat_icons[$group['cat']['slug']] ?? '🤖' ?> <?= h($group['cat']['name']) ?></option>
+    <?php endforeach; ?>
+  </select>
   <div class="tab-panels">
     <?php foreach ($byCategory as $i => $group): ?>
       <div class="tab-panel <?= $i === 0 ? 'active' : '' ?>" id="tab-<?= h($group['cat']['slug']) ?>">
@@ -187,14 +192,24 @@ include __DIR__ . '/includes/header.php';
 (function(){
   var btns   = document.querySelectorAll('.tab-btn');
   var panels = document.querySelectorAll('.tab-panel');
+  var sel    = document.querySelector('.tab-select');
+
+  function switchTab(slug) {
+    btns.forEach(function(b){ b.classList.remove('active'); });
+    panels.forEach(function(p){ p.classList.remove('active'); });
+    var btn = document.querySelector('.tab-btn[data-tab="' + slug + '"]');
+    if (btn) btn.classList.add('active');
+    var panel = document.getElementById('tab-' + slug);
+    if (panel) panel.classList.add('active');
+  }
+
   btns.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      btns.forEach(function(b){ b.classList.remove('active'); });
-      panels.forEach(function(p){ p.classList.remove('active'); });
-      btn.classList.add('active');
-      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
-    });
+    btn.addEventListener('click', function(){ switchTab(btn.dataset.tab); });
   });
+
+  if (sel) {
+    sel.addEventListener('change', function(){ switchTab(sel.value); });
+  }
 })();
 </script>
 <?php endif; ?>
