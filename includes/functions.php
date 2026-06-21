@@ -21,6 +21,29 @@ function slugify(string $name): string
     return trim($slug, '-');
 }
 
+// ---------- Image mirroring ----------
+function mirror_image_url(string $url): string
+{
+    if (!filter_var($url, FILTER_VALIDATE_URL)) return $url;
+
+    // Strip query params to get clean extension
+    $path = parse_url($url, PHP_URL_PATH);
+    $ext  = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+    if (!in_array($ext, ['jpg','jpeg','png','gif','webp'], true)) $ext = 'jpg';
+
+    $filename = time() . '-' . bin2hex(random_bytes(6)) . '.' . $ext;
+    $dest     = UPLOAD_DIR . '/' . $filename;
+
+    if (!is_dir(UPLOAD_DIR)) mkdir(UPLOAD_DIR, 0755, true);
+
+    $ctx  = stream_context_create(['http' => ['timeout' => 15, 'user_agent' => 'Mozilla/5.0']]);
+    $data = @file_get_contents($url, false, $ctx);
+    if ($data === false || strlen($data) < 100) return $url; // fallback to original on failure
+
+    file_put_contents($dest, $data);
+    return UPLOAD_URL . '/' . $filename;
+}
+
 // ---------- Cart (session-based: [productId => qty]) ----------
 function cart(): array
 {

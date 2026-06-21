@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $data['image'] = UPLOAD_URL . '/' . $filename;
             }
         } elseif (!empty($_POST['image_url'])) {
-            $data['image'] = trim($_POST['image_url']);
+            $data['image'] = mirror_image_url(trim($_POST['image_url']));
         }
 
         if (!$error) {
