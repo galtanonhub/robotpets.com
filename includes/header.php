@@ -35,6 +35,13 @@
           <a href="/for-gifts.php">Gift Buyers</a>
         </div>
       </div>
+      <div class="nav-dropdown">
+        <a href="/learn.php" class="nav-drop-trigger">Learn ▾</a>
+        <div class="nav-drop-menu">
+          <a href="/learn.php">Guides</a>
+          <a href="/blog.php">Blog &amp; News</a>
+        </div>
+      </div>
       <a href="/about.php">About</a>
       <a href="/faq.php">FAQ</a>
     </div>

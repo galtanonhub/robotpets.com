@@ -18,6 +18,7 @@ require_once __DIR__ . '/../../includes/functions.php';
     <a href="/admin/products.php">Products</a>
     <a href="/admin/categories.php">Categories</a>
     <a href="/admin/orders.php">Orders</a>
+    <a href="/admin/posts.php">Posts &amp; Guides</a>
     <a href="/" target="_blank">View Site ↗</a>
   </nav>
   <form action="/admin/logout.php" method="post"><button type="submit" class="btn-logout">Log out</button></form>
