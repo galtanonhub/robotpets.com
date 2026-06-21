@@ -1,0 +1,100 @@
+/* RobotPets admin panel */
+:root {
+  --bg: #f4f6fa;
+  --panel: #ffffff;
+  --border: #dfe4ee;
+  --text: #1c2333;
+  --text-dim: #6b7590;
+  --accent: #0ea5c6;
+  --accent-dark: #0b87a2;
+  --danger: #dc2f4e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body.admin-body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.55; }
+a { color: var(--accent-dark); text-decoration: none; }
+
+.admin-header {
+  background: #101725; color: #fff; display: flex; align-items: center; gap: 2rem;
+  padding: 0 1.5rem; height: 58px; position: sticky; top: 0; z-index: 50;
+}
+.admin-logo { color: #fff; font-weight: 700; font-size: 1.05rem; }
+.admin-logo span { color: #4dd9f0; font-weight: 500; }
+.admin-header nav { display: flex; gap: 1.2rem; }
+.admin-header nav a { color: #aeb8cf; font-size: .92rem; font-weight: 500; }
+.admin-header nav a:hover { color: #fff; }
+.btn-logout { margin-left: auto; background: none; border: 1px solid #3a4560; color: #aeb8cf; padding: .35rem .9rem; border-radius: 8px; cursor: pointer; }
+.btn-logout:hover { color: #fff; border-color: #fff; }
+.admin-header form { margin-left: auto; }
+
+.admin-main { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+h1 { font-size: 1.5rem; margin-bottom: 1.4rem; }
+h2 { font-size: 1.05rem; margin-bottom: 1rem; }
+.muted { color: var(--text-dim); font-weight: 400; font-size: .9rem; }
+.page-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.4rem; }
+.page-head h1 { margin: 0; }
+
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.8rem; }
+.stat-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem 1.4rem; display: flex; flex-direction: column; }
+.stat-value { font-size: 1.7rem; font-weight: 700; }
+.stat-label { color: var(--text-dim); font-size: .85rem; }
+
+.panel { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem; margin-bottom: 1.4rem; }
+.panel-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: .8rem; }
+.panel-head h2 { margin: 0; }
+
+table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+th { text-align: left; color: var(--text-dim); font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .5px; padding: .6rem .7rem; border-bottom: 2px solid var(--border); }
+td { padding: .7rem; border-bottom: 1px solid var(--border); vertical-align: middle; }
+tr:last-child td { border-bottom: none; }
+.thumb-cell { width: 56px; }
+.thumb { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; display: flex; align-items: center; justify-content: center; background: var(--bg); font-size: 1.3rem; }
+.actions-cell { display: flex; gap: .5rem; align-items: center; }
+
+.btn-primary, .btn-sm, .btn-danger {
+  display: inline-block; border: none; border-radius: 8px; cursor: pointer; font-family: inherit; font-weight: 600;
+}
+.btn-primary { background: var(--accent); color: #fff; padding: .6rem 1.3rem; font-size: .95rem; }
+.btn-primary:hover { background: var(--accent-dark); }
+.btn-sm { background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: .3rem .8rem; font-size: .83rem; }
+.btn-sm:hover { border-color: var(--accent); color: var(--accent-dark); }
+.btn-danger { background: none; border: 1px solid transparent; color: var(--danger); padding: .3rem .8rem; font-size: .83rem; }
+.btn-danger:hover { border-color: var(--danger); }
+
+.tag { background: #fef3c7; color: #92600a; font-size: .72rem; font-weight: 600; padding: .1rem .5rem; border-radius: 999px; }
+.status { font-size: .78rem; font-weight: 600; padding: .2rem .65rem; border-radius: 999px; text-transform: capitalize; white-space: nowrap; }
+.status-pending { background: #fef3c7; color: #92600a; }
+.status-paid { background: #dbeafe; color: #1e50a2; }
+.status-ordered_from_supplier { background: #ede9fe; color: #5b34b1; }
+.status-shipped { background: #cffafe; color: #15616d; }
+.status-delivered { background: #dcfce7; color: #166534; }
+.status-cancelled { background: #fee2e2; color: #991b1b; }
+
+label { display: flex; flex-direction: column; gap: .3rem; margin-bottom: 1rem; font-size: .88rem; font-weight: 500; color: var(--text-dim); }
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="url"], select, textarea {
+  border: 1px solid var(--border); border-radius: 8px; padding: .6rem .8rem; font-size: .95rem;
+  font-family: inherit; color: var(--text); background: #fff; outline: none; transition: border-color .15s;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+input[type="file"] { font-size: .9rem; }
+.form-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2rem; margin-bottom: 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.check { flex-direction: row; align-items: center; gap: .5rem; }
+.current-image img { max-width: 180px; border-radius: 10px; border: 1px solid var(--border); }
+.current-image span { display: block; color: var(--text-dim); font-size: .8rem; margin-top: .3rem; }
+.inline-form { display: flex; gap: .7rem; margin-bottom: 1.2rem; }
+.inline-form input, .inline-form select { flex: 1; max-width: 320px; }
+.form-error { background: #fee2e2; color: #991b1b; padding: .7rem 1rem; border-radius: 8px; margin-bottom: 1rem; font-size: .9rem; }
+.order-detail-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 1.4rem; align-items: start; }
+.order-total { margin-top: 1rem; text-align: right; font-size: 1.05rem; }
+
+/* Login */
+.login-body { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #101725; }
+.login-card { background: #fff; border-radius: 16px; padding: 2.5rem; width: 100%; max-width: 380px; box-shadow: 0 20px 60px rgba(0,0,0,.4); }
+.login-card h1 { text-align: center; font-size: 1.3rem; margin-bottom: 1.6rem; }
+.login-card input { width: 100%; }
+.login-card .btn-primary { width: 100%; padding: .75rem; margin-top: .4rem; }
+
+@media (max-width: 800px) {
+  .form-grid, .order-detail-grid { grid-template-columns: 1fr; }
+  .admin-header nav { gap: .8rem; }
+}

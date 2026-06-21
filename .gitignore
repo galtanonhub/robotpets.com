@@ -1,0 +1,17 @@
+# Credentials — never commit
+includes/config.php
+
+# Uploaded product images (server-managed)
+uploads/*
+!uploads/.gitkeep
+
+# Hero video (large binary, drop directly on server)
+media/*.mp4
+media/*.mov
+
+# SSL / server-managed
+.well-known/
+
+# OS
+.DS_Store
+Thumbs.db
