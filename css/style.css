@@ -490,9 +490,12 @@ main { padding-top: 68px; }
   .nav-hamburger { display: flex; }
   .nav-search { display: none; }
   .audience-grid { grid-template-columns: 1fr; }
-  .tab-bar { flex-wrap: nowrap; overflow-x: auto; padding-bottom: .75rem; -webkit-overflow-scrolling: touch; }
-  .tab-product-row { display: flex; gap: 1rem; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: .5rem; }
-  .tab-product-row .product-card { min-width: 220px; flex-shrink: 0; }
+  .tab-bar { flex-wrap: nowrap; overflow-x: scroll; overflow-y: visible; padding-bottom: .75rem; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .tab-bar::-webkit-scrollbar { display: none; }
+  .tab-product-row { display: flex; gap: 1rem; overflow-x: scroll; overflow-y: visible; padding-bottom: .75rem; -webkit-overflow-scrolling: touch; scrollbar-width: none; align-items: flex-start; }
+  .tab-product-row::-webkit-scrollbar { display: none; }
+  .tab-product-row .product-card { min-width: 200px; max-width: 200px; flex-shrink: 0; }
+  .tab-product-row .product-image { aspect-ratio: 1; height: auto; }
 }
 
 /* ---------- Blog / Learn listing ---------- */
