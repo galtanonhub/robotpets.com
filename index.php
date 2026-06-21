@@ -1,44 +1,120 @@
 <?php
 require_once __DIR__ . '/includes/functions.php';
 
-$featured = db()->query(
-    "SELECT p.*, c.name AS category_name FROM products p
+$featured   = db()->query(
+    "SELECT p.*, c.name AS category_name, c.slug AS category_slug FROM products p
      LEFT JOIN categories c ON c.id = p.category_id
      WHERE p.active = 1 AND p.featured = 1 ORDER BY p.created_at DESC LIMIT 8"
 )->fetchAll();
+
 $categories = db()->query('SELECT * FROM categories ORDER BY name')->fetchAll();
+
+$hero = $featured[0] ?? null;
+
+$cat_icons = [
+    'robot-dogs'          => '🐕',
+    'robot-cats'          => '🐈',
+    'robot-birds-exotics' => '🦜',
+    'accessories-parts'   => '🔧',
+];
 
 include __DIR__ . '/includes/header.php';
 ?>
 
-<!-- HERO: drop your video at media/hero.mp4 and it plays automatically -->
-<section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline poster="/media/hero-poster.jpg" id="heroVideo">
-    <source src="/media/hero.mp4" type="video/mp4">
-  </video>
-  <div class="hero-fallback" id="heroFallback"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content container">
-    <p class="hero-kicker">The future of companionship is here</p>
-    <h1>Meet Your New<br><span class="glow">Best Friend</span></h1>
-    <p class="hero-sub">Lifelike robotic pets with real personality. No feeding, no fur, no vet bills — just pure companionship, powered by AI.</p>
-    <div class="hero-cta">
-      <a href="/shop.php" class="btn btn-primary btn-lg">Shop All Pets</a>
-      <a href="#featured" class="btn btn-ghost btn-lg">See Featured</a>
+<section class="hero-grid-wrap">
+
+  <div class="hero-grid">
+
+    <!-- Main panel -->
+    <div class="hero-main">
+      <?php if ($hero): ?>
+        <p class="hero-tag"><?= h($hero['category_name'] ?? 'Featured') ?></p>
+        <h1>Meet <span class="glow"><?= h($hero['name']) ?></span></h1>
+        <p class="hero-main-desc"><?= h(mb_substr($hero['description'] ?? '', 0, 150)) ?></p>
+        <div class="hero-main-btns">
+          <a href="/product.php?id=<?= (int)$hero['id'] ?>" class="btn btn-primary btn-lg">Shop Now — <?= money($hero['price']) ?></a>
+          <a href="/shop.php" class="btn btn-ghost btn-lg">See All Pets →</a>
+        </div>
+      <?php else: ?>
+        <p class="hero-tag">Welcome to RobotPets</p>
+        <h1>Companions of<br><span class="glow">the Future</span></h1>
+        <p class="hero-main-desc">Lifelike robotic pets with real personality. No vet bills, no allergies, no guilt when you travel — just pure companionship, powered by AI.</p>
+        <div class="hero-main-btns">
+          <a href="/shop.php" class="btn btn-primary btn-lg">Shop All Pets</a>
+          <a href="/find-my-pet.php" class="btn btn-ghost btn-lg">Find My Pet →</a>
+        </div>
+      <?php endif; ?>
     </div>
+
+    <!-- Side tiles -->
+    <div class="hero-side">
+      <?php for ($i = 1; $i <= 2; $i++): ?>
+        <?php if (!empty($featured[$i])): $t = $featured[$i]; ?>
+        <a href="/product.php?id=<?= (int)$t['id'] ?>" class="hero-tile">
+          <div class="hero-tile-img">
+            <?php if (!empty($t['image'])): ?>
+              <img src="<?= h($t['image']) ?>" alt="<?= h($t['name']) ?>">
+            <?php else: ?>
+              <?= $cat_icons[$t['category_slug'] ?? ''] ?? '🤖' ?>
+            <?php endif; ?>
+          </div>
+          <div class="hero-tile-body">
+            <?php if (!empty($t['sale_price'])): ?>
+              <span class="hero-tile-badge" style="background:var(--danger);color:#fff;">Sale</span>
+            <?php else: ?>
+              <span class="hero-tile-badge">Featured</span>
+            <?php endif; ?>
+            <div class="hero-tile-name"><?= h($t['name']) ?></div>
+            <div class="hero-tile-sub"><?= h(mb_substr($t['description'] ?? '', 0, 65)) ?><?= mb_strlen($t['description'] ?? '') > 65 ? '…' : '' ?></div>
+            <div class="hero-tile-price"><?= money($t['sale_price'] ?: $t['price']) ?></div>
+          </div>
+          <span class="hero-tile-arrow">›</span>
+        </a>
+        <?php else: ?>
+        <a href="/shop.php" class="hero-tile">
+          <div class="hero-tile-img">🛍️</div>
+          <div class="hero-tile-body">
+            <div class="hero-tile-name">Browse the Shop</div>
+            <div class="hero-tile-sub">Explore all robotic companions</div>
+          </div>
+          <span class="hero-tile-arrow">›</span>
+        </a>
+        <?php endif; ?>
+      <?php endfor; ?>
+
+      <a href="/for-gifts.php" class="hero-tile hero-tile-gift">
+        <div class="hero-tile-gift-icon">🎁</div>
+        <div class="hero-tile-body">
+          <div class="hero-tile-name" style="color:var(--accent);">Gift Guide</div>
+          <div class="hero-tile-sub">Not sure? We'll help you find the perfect companion.</div>
+        </div>
+        <span class="hero-tile-arrow">›</span>
+      </a>
+    </div>
+
   </div>
-  <div class="hero-scroll">▼</div>
+
+  <!-- Trust bar -->
+  <div class="hero-trust">
+    <div class="hero-trust-item"><strong>Free Shipping</strong><span>On every order, worldwide</span></div>
+    <div class="hero-trust-item"><strong>30-Day Returns</strong><span>Love it or send it back</span></div>
+    <div class="hero-trust-item"><strong>1-Year Warranty</strong><span>Every companion covered</span></div>
+    <div class="hero-trust-item"><strong>Secure Checkout</strong><span>Encrypted end to end</span></div>
+  </div>
+
 </section>
 
-<section class="trust-bar">
-  <div class="container trust-grid">
-    <div><strong>Free Shipping</strong><span>On every order, worldwide</span></div>
-    <div><strong>30-Day Returns</strong><span>Love it or send it back</span></div>
-    <div><strong>1-Year Warranty</strong><span>Every companion covered</span></div>
-    <div><strong>Secure Checkout</strong><span>Encrypted end to end</span></div>
-  </div>
-</section>
+<!-- Category strip -->
+<div class="cat-strip">
+  <?php foreach ($categories as $c): ?>
+  <a href="/shop.php?category=<?= h($c['slug']) ?>" class="cat-strip-tile">
+    <span class="cat-strip-icon"><?= $cat_icons[$c['slug']] ?? '🤖' ?></span>
+    <span class="cat-strip-name"><?= h($c['name']) ?></span>
+  </a>
+  <?php endforeach; ?>
+</div>
 
+<!-- Featured products -->
 <section class="section container" id="featured">
   <div class="section-head">
     <h2>Featured Companions</h2>
@@ -49,19 +125,11 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<section class="section container">
-  <div class="section-head"><h2>Browse by Category</h2></div>
-  <div class="category-grid">
-    <?php foreach ($categories as $c): ?>
-      <a href="/shop.php?category=<?= h($c['slug']) ?>" class="category-card"><span><?= h($c['name']) ?></span></a>
-    <?php endforeach; ?>
-  </div>
-</section>
-
 <section class="cta-band">
   <div class="container">
-    <h2>Ready for a pet that never sheds?</h2>
-    <a href="/shop.php" class="btn btn-primary btn-lg">Find Your Companion</a>
+    <h2>Not sure where to start?</h2>
+    <p style="color:var(--text-dim);margin:.75rem 0 1.8rem;">Answer 4 quick questions and we'll match you with the right companion.</p>
+    <a href="/find-my-pet.php" class="btn btn-primary btn-lg">Take the Pet Finder Quiz →</a>
   </div>
 </section>
 
