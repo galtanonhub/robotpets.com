@@ -436,11 +436,7 @@ main { padding-top: 68px; }
   .hero-grid { grid-template-columns: 1fr; }
   .hero-main { padding: 2rem 1.25rem; min-height: auto; border-right: none; border-bottom: 1px solid var(--border); }
   .hero-main::after { display: none; }
-  .hero-side { flex-direction: row; overflow-x: auto; border-top: none; }
-  .hero-tile { flex: 0 0 200px; flex-direction: column; align-items: flex-start; gap: .6rem; padding: 1rem; border-bottom: none; border-right: 1px solid var(--border); }
-  .hero-tile:last-child { border-right: none; }
-  .hero-tile-arrow { display: none; }
-  .hero-tile-img, .hero-tile-gift-icon { width: 40px; height: 40px; font-size: 1.4rem; }
+  .hero-side { display: none; }
   .hero-trust { grid-template-columns: 1fr 1fr; }
   .hero-trust-item:nth-child(2) { border-right: none; }
   .hero-trust-item:nth-child(3) { border-top: 1px solid var(--border); }
