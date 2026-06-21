@@ -4,7 +4,7 @@ require_once __DIR__ . '/includes/functions.php';
 $featured   = db()->query(
     "SELECT p.*, c.name AS category_name, c.slug AS category_slug FROM products p
      LEFT JOIN categories c ON c.id = p.category_id
-     WHERE p.active = 1 AND p.featured = 1 ORDER BY p.created_at DESC LIMIT 8"
+     WHERE p.active = 1 AND p.featured = 1 ORDER BY RAND() LIMIT 8"
 )->fetchAll();
 
 $categories = db()->query('SELECT * FROM categories ORDER BY name')->fetchAll();
