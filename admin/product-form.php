@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($data['name'] === '') {
         $error = 'Product name is required.';
     } else {
-        // Image upload
+        // Image — file upload takes priority, then URL field
         if (!empty($_FILES['image']['name']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             $ext = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
             if (!in_array($ext, ['jpg', 'jpeg', 'png', 'gif', 'webp'], true)) {
@@ -49,6 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 move_uploaded_file($_FILES['image']['tmp_name'], UPLOAD_DIR . '/' . $filename);
                 $data['image'] = UPLOAD_URL . '/' . $filename;
             }
+        } elseif (!empty($_POST['image_url'])) {
+            $data['image'] = trim($_POST['image_url']);
         }
 
         if (!$error) {
@@ -123,8 +125,9 @@ include __DIR__ . '/includes/admin-header.php';
         </select>
       </label>
       <label>Product Image<input type="file" name="image" accept="image/*"></label>
+      <label>Image URL <small style="color:var(--text-dim);font-weight:400;">(paste a URL to use instead of uploading)</small><input type="url" name="image_url" value="<?= h($product['image'] ?? '') ?>" placeholder="https://..."></label>
       <?php if (!empty($product['image'])): ?>
-        <div class="current-image"><img src="<?= h($product['image']) ?>" alt="Current image"><span>Current image (upload replaces it)</span></div>
+        <div class="current-image"><img src="<?= h($product['image']) ?>" alt="Current image"><span>Current image</span></div>
       <?php endif; ?>
       <label class="check"><input type="checkbox" name="is_hero" <?= !empty($product['is_hero']) ? 'checked' : '' ?>> Hero product <small style="color:var(--text-dim);font-weight:400;">(homepage left panel — only one at a time)</small></label>
       <?php
