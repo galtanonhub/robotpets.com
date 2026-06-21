@@ -22,6 +22,8 @@ foreach ($categories as $c) {
     $prods = $stmt->fetchAll();
     if ($prods) $byCategory[] = ['cat' => $c, 'products' => $prods];
 }
+$tabOrder = ['robot-dogs' => 0, 'robot-cats' => 1, 'robot-birds-exotics' => 2];
+usort($byCategory, fn($a, $b) => ($tabOrder[$a['cat']['slug']] ?? 99) <=> ($tabOrder[$b['cat']['slug']] ?? 99));
 
 // Use pinned hero product if set, otherwise fall back to first featured
 $heroStmt = db()->query(
