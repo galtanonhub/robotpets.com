@@ -1,13 +1,13 @@
 /* RobotPets — immersive dark storefront theme */
 :root {
-  --bg: #07090f;
-  --bg-soft: #0d1119;
-  --panel: #121726;
-  --border: #232b40;
-  --text: #e8ecf5;
-  --text-dim: #9aa5bd;
-  --accent: #00e5ff;
-  --accent-2: #7c4dff;
+  --bg: #110d07;
+  --bg-soft: #171009;
+  --panel: #1e1408;
+  --border: #2e1f08;
+  --text: #f5ede0;
+  --text-dim: #a8906c;
+  --accent: #f59e0b;
+  --accent-2: #fb923c;
   --danger: #ff5370;
   --radius: 14px;
   --font-display: 'Orbitron', sans-serif;
@@ -44,7 +44,7 @@ img { max-width: 100%; display: block; }
 .nav-search input:focus { border-color: var(--accent); width: 220px; }
 .cart-link { position: relative; display: flex; color: var(--text); }
 .cart-count {
-  position: absolute; top: -8px; right: -10px; background: var(--accent); color: #001218;
+  position: absolute; top: -8px; right: -10px; background: var(--accent); color: #1a0d00;
   font-size: .7rem; font-weight: 700; min-width: 18px; height: 18px; border-radius: 999px;
   display: flex; align-items: center; justify-content: center; padding: 0 4px;
 }
