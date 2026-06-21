@@ -19,10 +19,10 @@
         <span class="compare-price"><?= money($p['compare_at_price']) ?></span>
       <?php endif; ?>
     </div>
-    <?php if ((int)$p['stock'] > 0): ?>
-      <button class="btn btn-primary btn-block add-to-cart" data-product-id="<?= (int)$p['id'] ?>">Add to Cart</button>
+    <?php if (!empty($p['affiliate_url'])): ?>
+      <a href="/go/<?= h($p['slug']) ?>" target="_blank" rel="noopener" class="btn btn-primary btn-block">Check Price →</a>
     <?php else: ?>
-      <button class="btn btn-block" disabled>Out of Stock</button>
+      <a href="/product.php?slug=<?= h($p['slug']) ?>" class="btn btn-block">View Details</a>
     <?php endif; ?>
   </div>
 </div>

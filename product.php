@@ -90,16 +90,10 @@ include __DIR__ . '/includes/header.php';
         <?php endif; ?>
       </div>
       <p class="product-description"><?= nl2br(h($product['description'])) ?></p>
-      <?php if ((int)$product['stock'] > 0): ?>
-        <p class="stock-status in-stock">✓ In stock — ships within 24 hours</p>
-        <form class="add-form">
-          <label>Qty
-            <input type="number" name="qty" value="1" min="1" max="<?= (int)$product['stock'] ?>" id="qtyInput">
-          </label>
-          <button type="button" class="btn btn-primary btn-lg add-to-cart" data-product-id="<?= (int)$product['id'] ?>" data-qty-input="qtyInput">Add to Cart</button>
-        </form>
+      <?php if (!empty($product['affiliate_url'])): ?>
+        <a href="/go/<?= h($product['slug']) ?>" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="align-self:flex-start;">Check Price →</a>
       <?php else: ?>
-        <p class="stock-status out-of-stock">Currently out of stock</p>
+        <p class="stock-status" style="color:var(--text-dim);">Availability coming soon</p>
       <?php endif; ?>
       <ul class="product-perks">
         <li>🚚 Free worldwide shipping</li>

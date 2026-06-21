@@ -23,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'description' => trim($_POST['description'] ?? ''),
         'price' => (float)($_POST['price'] ?? 0),
         'compare_at_price' => $_POST['compare_at_price'] !== '' ? (float)$_POST['compare_at_price'] : null,
+        'affiliate_url' => trim($_POST['affiliate_url'] ?? '') ?: null,
         'supplier_url' => trim($_POST['supplier_url'] ?? '') ?: null,
         'supplier_price' => $_POST['supplier_price'] !== '' ? (float)$_POST['supplier_price'] : null,
         'category_id' => $_POST['category_id'] !== '' ? (int)$_POST['category_id'] : null,
@@ -103,7 +104,8 @@ include __DIR__ . '/includes/admin-header.php';
         <label>Supplier Cost ($)<input type="number" name="supplier_price" step="0.01" min="0" value="<?= h((string)($product['supplier_price'] ?? '')) ?>"></label>
         <label>Stock *<input type="number" name="stock" min="0" value="<?= (int)($product['stock'] ?? 0) ?>" required></label>
       </div>
-      <label>Supplier URL (where you order from)<input type="url" name="supplier_url" value="<?= h($product['supplier_url'] ?? '') ?>" placeholder="https://supplier.com/product/..."></label>
+      <label>Affiliate URL <small style="color:var(--text-dim);font-weight:400;">(your full affiliate link — becomes /go/slug on the site)</small><input type="url" name="affiliate_url" value="<?= h($product['affiliate_url'] ?? '') ?>" placeholder="https://www.amazon.com/dp/...?tag=yourtag"></label>
+      <label>Supplier URL (internal reference only)<input type="url" name="supplier_url" value="<?= h($product['supplier_url'] ?? '') ?>" placeholder="https://supplier.com/product/..."></label>
     </div>
     <div>
       <label>Category
