@@ -37,7 +37,6 @@ $_seo_type   = $og_type ?? 'website';
   <nav class="nav container">
     <a href="/" class="logo">ROBOT<span>PETS</span></a>
     <div class="nav-links">
-      <a href="/">Home</a>
       <div class="nav-dropdown">
         <a href="/shop.php" class="nav-drop-trigger">Shop ▾</a>
         <div class="nav-drop-menu">
@@ -92,7 +91,6 @@ $_seo_type   = $og_type ?? 'website';
     <button class="mobile-drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
   </div>
   <div class="mobile-drawer-body">
-    <a href="/" class="mobile-nav-link">Home</a>
 
     <p class="mobile-nav-section">Shop</p>
     <a href="/shop.php" class="mobile-nav-sub">All Products</a>
