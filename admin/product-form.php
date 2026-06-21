@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'stock' => (int)($_POST['stock'] ?? 0),
         'featured' => isset($_POST['featured']) ? 1 : 0,
         'active' => isset($_POST['active']) ? 1 : 0,
+        'is_hero' => isset($_POST['is_hero']) ? 1 : 0,
     ];
 
     if ($data['name'] === '') {
@@ -51,6 +52,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         if (!$error) {
+            // Only one product can be hero at a time
+            if ($data['is_hero']) {
+                $pdo->exec('UPDATE products SET is_hero = 0');
+            }
             if ($product) {
                 $sets = implode(', ', array_map(fn($k) => "$k = ?", array_keys($data)));
                 $stmt = $pdo->prepare("UPDATE products SET $sets WHERE id = ?");
@@ -121,6 +126,7 @@ include __DIR__ . '/includes/admin-header.php';
         <div class="current-image"><img src="<?= h($product['image']) ?>" alt="Current image"><span>Current image (upload replaces it)</span></div>
       <?php endif; ?>
       <label class="check"><input type="checkbox" name="featured" <?= !empty($product['featured']) ? 'checked' : '' ?>> Featured on homepage</label>
+      <label class="check"><input type="checkbox" name="is_hero" <?= !empty($product['is_hero']) ? 'checked' : '' ?>> Hero product <small style="color:var(--text-dim);font-weight:400;">(pinned to homepage spotlight — only one at a time)</small></label>
       <label class="check"><input type="checkbox" name="active" <?= !isset($product['active']) || $product['active'] ? 'checked' : '' ?>> Active (visible in store)</label>
     </div>
   </div>

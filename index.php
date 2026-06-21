@@ -9,7 +9,13 @@ $featured   = db()->query(
 
 $categories = db()->query('SELECT * FROM categories ORDER BY name')->fetchAll();
 
-$hero = $featured[0] ?? null;
+// Use pinned hero product if set, otherwise fall back to first featured
+$heroStmt = db()->query(
+    "SELECT p.*, c.name AS category_name, c.slug AS category_slug FROM products p
+     LEFT JOIN categories c ON c.id = p.category_id
+     WHERE p.active = 1 AND p.is_hero = 1 LIMIT 1"
+);
+$hero = $heroStmt->fetch() ?: ($featured[0] ?? null);
 
 $cat_icons = [
     'robot-dogs'          => '🐕',
