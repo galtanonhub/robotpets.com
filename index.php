@@ -18,6 +18,16 @@ $cat_icons = [
     'accessories-parts'   => '🔧',
 ];
 
+$title       = 'RobotPets — Companions of the Future';
+$description = 'Discover lifelike robotic companions at RobotPets — robot dogs, cats, birds and more. No vet bills, no allergies, free shipping on every order.';
+$json_ld     = json_encode([
+    '@context'    => 'https://schema.org',
+    '@type'       => 'Organization',
+    'name'        => 'RobotPets',
+    'url'         => SITE_URL,
+    'description' => $description,
+], JSON_UNESCAPED_SLASHES);
+
 include __DIR__ . '/includes/header.php';
 ?>
 

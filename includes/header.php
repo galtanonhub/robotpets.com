@@ -1,11 +1,32 @@
-<?php require_once __DIR__ . '/functions.php'; ?>
+<?php
+require_once __DIR__ . '/functions.php';
+$_seo_title  = isset($title) ? h($title) . ' | RobotPets' : 'RobotPets — Companions of the Future';
+$_seo_desc   = h($description ?? 'RobotPets.com — lifelike robotic companions. Robot dogs, cats, birds and more. Free shipping on every order.');
+$_seo_url    = h(($canonical ?? SITE_URL . strtok($_SERVER['REQUEST_URI'], '?')));
+$_seo_image  = h($og_image ?? SITE_URL . '/media/og-default.jpg');
+$_seo_type   = $og_type ?? 'website';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?= isset($title) ? h($title) . ' | RobotPets' : 'RobotPets — Companions of the Future' ?></title>
-  <meta name="description" content="RobotPets.com — lifelike robotic companions. Robot dogs, cats, birds and more. Free shipping on every order.">
+  <title><?= $_seo_title ?></title>
+  <meta name="description" content="<?= $_seo_desc ?>">
+  <link rel="canonical" href="<?= $_seo_url ?>">
+  <meta property="og:type" content="<?= $_seo_type ?>">
+  <meta property="og:title" content="<?= $_seo_title ?>">
+  <meta property="og:description" content="<?= $_seo_desc ?>">
+  <meta property="og:url" content="<?= $_seo_url ?>">
+  <meta property="og:image" content="<?= $_seo_image ?>">
+  <meta property="og:site_name" content="RobotPets">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<?= $_seo_title ?>">
+  <meta name="twitter:description" content="<?= $_seo_desc ?>">
+  <meta name="twitter:image" content="<?= $_seo_image ?>">
+  <?php if (!empty($json_ld)): ?>
+  <script type="application/ld+json"><?= $json_ld ?></script>
+  <?php endif; ?>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">

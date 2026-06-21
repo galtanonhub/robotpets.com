@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once __DIR__ . '/includes/functions.php';
 
 $sent = false;
@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $title = 'Contact';
+$description = 'Get in touch with the RobotPets team for order help, technical support, returns, or general questions.';
 include __DIR__ . '/includes/header.php';
 ?>
 

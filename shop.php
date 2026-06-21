@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once __DIR__ . '/includes/functions.php';
 
 $activeCategory = trim($_GET['category'] ?? '');
@@ -23,6 +23,7 @@ $products = $stmt->fetchAll();
 $categories = db()->query('SELECT * FROM categories ORDER BY name')->fetchAll();
 
 $title = 'Shop';
+$description = 'Browse our full collection of robotic pets — robot dogs, cats, birds, exotic companions and accessories. Free shipping on every order.';
 include __DIR__ . '/includes/header.php';
 ?>
 

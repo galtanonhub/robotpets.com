@@ -1,6 +1,7 @@
-<?php
+﻿<?php
 require_once __DIR__ . '/includes/functions.php';
 $title = 'About';
+$description = 'Learn about RobotPets — AI-powered companions for seniors, kids, allergy sufferers, and anyone who loves pets without the hassle.';
 include __DIR__ . '/includes/header.php';
 ?>
 

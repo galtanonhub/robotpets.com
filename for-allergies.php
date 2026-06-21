@@ -1,6 +1,7 @@
-<?php
+﻿<?php
 require_once __DIR__ . '/includes/functions.php';
 $title = 'Hypoallergenic Robotic Pets';
+$description = 'Love pets but have allergies? Our hypoallergenic robotic companions give you all the joy of pet ownership with none of the dander.';
 include __DIR__ . '/includes/header.php';
 ?>
 

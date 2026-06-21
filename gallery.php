@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once __DIR__ . '/includes/functions.php';
 
 // Handle submission
@@ -42,6 +42,7 @@ $entries = db()->query(
 )->fetchAll();
 
 $title = 'Owner Gallery';
+$description = 'Meet real RobotPets owners and their companions. Submit your own photo to be featured in our community gallery.';
 include __DIR__ . '/includes/header.php';
 ?>
 

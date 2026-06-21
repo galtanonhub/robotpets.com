@@ -1,6 +1,7 @@
-<?php
+﻿<?php
 require_once __DIR__ . '/includes/functions.php';
 $title = 'FAQ';
+$description = 'Answers to common questions about RobotPets — battery life, shipping, returns, warranties, allergies, and more.';
 include __DIR__ . '/includes/header.php';
 ?>
 

@@ -56,7 +56,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['form'] ?? '') === 'review'
     }
 }
 
-$title = $product['name'];
+$title       = $product['name'];
+$description = mb_substr(strip_tags($product['description'] ?? ''), 0, 155) ?: 'Shop ' . $product['name'] . ' at RobotPets — lifelike robotic companion with free shipping and 1-year warranty.';
+$og_image    = !empty($product['image']) ? $product['image'] : null;
+$og_type     = 'product';
+$canonical   = SITE_URL . '/product.php?slug=' . urlencode($product['slug']);
+$json_ld     = json_encode([
+    '@context'    => 'https://schema.org',
+    '@type'       => 'Product',
+    'name'        => $product['name'],
+    'description' => strip_tags($product['description'] ?? ''),
+    'image'       => $product['image'] ?? '',
+    'offers'      => [
+        '@type'         => 'Offer',
+        'price'         => number_format((float)$product['price'], 2),
+        'priceCurrency' => 'USD',
+        'availability'  => 'https://schema.org/InStock',
+        'url'           => SITE_URL . '/go/' . $product['slug'],
+    ],
+], JSON_UNESCAPED_SLASHES);
+
 include __DIR__ . '/includes/header.php';
 ?>
 

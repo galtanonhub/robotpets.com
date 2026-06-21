@@ -1,6 +1,7 @@
-<?php
+﻿<?php
 require_once __DIR__ . '/includes/functions.php';
 $title = 'Robotic Pets as Gifts';
+$description = 'The perfect unique gift — robotic companions for any budget, any age, any occasion. Free shipping and easy returns.';
 include __DIR__ . '/includes/header.php';
 ?>
 

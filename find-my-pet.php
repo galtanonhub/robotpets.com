@@ -1,6 +1,7 @@
-<?php
+﻿<?php
 require_once __DIR__ . '/includes/functions.php';
 $title = 'Find My Pet';
+$description = 'Not sure which robotic pet is right for you? Take our 4-question quiz and find your perfect AI companion.';
 include __DIR__ . '/includes/header.php';
 ?>
 

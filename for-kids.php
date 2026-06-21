@@ -1,6 +1,7 @@
-<?php
+﻿<?php
 require_once __DIR__ . '/includes/functions.php';
 $title = 'Robotic Pets for Kids';
+$description = 'Safe, durable robot pets for kids — interactive companions that teach responsibility and provide endless entertainment.';
 include __DIR__ . '/includes/header.php';
 ?>
 

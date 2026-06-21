@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once __DIR__ . '/includes/functions.php';
 
 $guides = db()->query(
@@ -7,6 +7,7 @@ $guides = db()->query(
 )->fetchAll();
 
 $title = 'Learn';
+$description = 'Robotic pet guides — setup tutorials, buying guides, comparisons, and care tips for your AI companion.';
 include __DIR__ . '/includes/header.php';
 ?>
 

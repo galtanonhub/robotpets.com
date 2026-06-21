@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once __DIR__ . '/includes/functions.php';
 
 $posts = db()->query(
@@ -7,6 +7,7 @@ $posts = db()->query(
 )->fetchAll();
 
 $title = 'Blog';
+$description = 'The RobotPets blog — news, guides, and tips on robotic companions and AI pets.';
 include __DIR__ . '/includes/header.php';
 ?>
 

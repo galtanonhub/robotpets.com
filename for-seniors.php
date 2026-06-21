@@ -1,6 +1,7 @@
-<?php
+﻿<?php
 require_once __DIR__ . '/includes/functions.php';
 $title = 'Robotic Pets for Seniors';
+$description = 'Robotic pets for seniors and caregivers — calming, lifelike AI companions that reduce loneliness with no vet bills or allergies.';
 include __DIR__ . '/includes/header.php';
 ?>
 
