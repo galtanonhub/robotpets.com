@@ -42,7 +42,7 @@ include __DIR__ . '/includes/header.php';
         <h1>Meet <span class="glow"><?= h($hero['name']) ?></span></h1>
         <p class="hero-main-desc"><?= h(mb_substr($hero['description'] ?? '', 0, 150)) ?></p>
         <div class="hero-main-btns">
-          <a href="/product.php?id=<?= (int)$hero['id'] ?>" class="btn btn-primary btn-lg">Shop Now — <?= money($hero['price']) ?></a>
+          <a href="/product.php?slug=<?= h($hero['slug']) ?>" class="btn btn-primary btn-lg">Shop Now — <?= money($hero['price']) ?></a>
           <a href="/shop.php" class="btn btn-ghost btn-lg">See All Pets →</a>
         </div>
       <?php else: ?>
@@ -60,7 +60,7 @@ include __DIR__ . '/includes/header.php';
     <div class="hero-side">
       <?php for ($i = 1; $i <= 2; $i++): ?>
         <?php if (!empty($featured[$i])): $t = $featured[$i]; ?>
-        <a href="/product.php?id=<?= (int)$t['id'] ?>" class="hero-tile">
+        <a href="/product.php?slug=<?= h($t['slug']) ?>" class="hero-tile">
           <div class="hero-tile-img">
             <?php if (!empty($t['image'])): ?>
               <img src="<?= h($t['image']) ?>" alt="<?= h($t['name']) ?>">
