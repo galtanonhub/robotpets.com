@@ -31,30 +31,6 @@ $reviews = $stmt->fetchAll();
 $reviewCount = count($reviews);
 $avgRating   = $reviewCount ? array_sum(array_column($reviews, 'rating')) / $reviewCount : 0;
 
-// Handle review submission
-$reviewSent  = false;
-$reviewError = '';
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['form'] ?? '') === 'review') {
-    $rName   = trim($_POST['r_name'] ?? '');
-    $rEmail  = trim($_POST['r_email'] ?? '');
-    $rRating = (int)($_POST['r_rating'] ?? 0);
-    $rBody   = trim($_POST['r_body'] ?? '');
-    $honeypot = $_POST['website'] ?? '';
-
-    if ($honeypot !== '') {
-        $reviewSent = true;
-    } elseif (!$rName || !$rEmail || $rRating < 1 || $rRating > 5) {
-        $reviewError = 'Please fill in your name, email, and a star rating.';
-    } elseif (!filter_var($rEmail, FILTER_VALIDATE_EMAIL)) {
-        $reviewError = 'Please enter a valid email address.';
-    } else {
-        $stmt = db()->prepare(
-            'INSERT INTO reviews (product_id, name, email, rating, body) VALUES (?,?,?,?,?)'
-        );
-        $stmt->execute([$product['id'], $rName, $rEmail, $rRating, $rBody ?: null]);
-        $reviewSent = true;
-    }
-}
 
 $title       = $product['name'];
 $description = mb_substr(strip_tags($product['description'] ?? ''), 0, 155) ?: 'Shop ' . $product['name'] . ' at RobotPets — lifelike robotic companion.';
@@ -153,41 +129,8 @@ include __DIR__ . '/includes/header.php';
         <?php endforeach; ?>
       </div>
     <?php else: ?>
-      <p class="review-empty">No reviews yet — be the first!</p>
+      <p class="review-empty">No reviews yet.</p>
     <?php endif; ?>
-
-    <div class="review-form-wrap">
-      <h3>Write a Review</h3>
-      <?php if ($reviewSent): ?>
-        <p class="review-thanks">✓ Thanks for your review! It will appear here once approved.</p>
-      <?php else: ?>
-        <?php if ($reviewError): ?><p class="form-error"><?= h($reviewError) ?></p><?php endif; ?>
-        <form method="post" class="review-form">
-          <input type="hidden" name="form" value="review">
-          <label style="display:none;"><input type="text" name="website" tabindex="-1" autocomplete="off"></label>
-
-          <div class="form-row">
-            <label>Your Name *<input type="text" name="r_name" value="<?= h($_POST['r_name'] ?? '') ?>" required></label>
-            <label>Email * <small>(not shown publicly)</small><input type="email" name="r_email" value="<?= h($_POST['r_email'] ?? '') ?>" required></label>
-          </div>
-
-          <fieldset class="star-rating-field">
-            <legend>Rating *</legend>
-            <div class="star-radio-group">
-              <?php for ($i = 5; $i >= 1; $i--): ?>
-                <input type="radio" name="r_rating" id="star<?= $i ?>" value="<?= $i ?>" <?= (isset($_POST['r_rating']) && (int)$_POST['r_rating'] === $i) ? 'checked' : ($i === 5 ? 'checked' : '') ?>>
-                <label for="star<?= $i ?>" title="<?= $i ?> star<?= $i > 1 ? 's' : '' ?>">★</label>
-              <?php endfor; ?>
-            </div>
-          </fieldset>
-
-          <label>Your Review<textarea name="r_body" rows="5" placeholder="What did you think? How does it compare to expectations?"><?= h($_POST['r_body'] ?? '') ?></textarea></label>
-
-          <button type="submit" class="btn btn-primary">Submit Review</button>
-          <p class="review-note">Reviews are approved before appearing publicly.</p>
-        </form>
-      <?php endif; ?>
-    </div>
 
   </div>
 </section>
