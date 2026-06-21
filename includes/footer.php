@@ -15,7 +15,6 @@
     <div>
       <h4>Support</h4>
       <a href="/shop.php">All Products</a>
-      <a href="/cart.php">Your Cart</a>
       <a href="mailto:support@robotpets.com">support@robotpets.com</a>
     </div>
   </div>

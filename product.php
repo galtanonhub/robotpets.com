@@ -101,38 +101,31 @@ include __DIR__ . '/includes/header.php';
   <?php endif; ?>
 </section>
 
-<!-- Reviews -->
+<?php if ($reviewCount > 0): ?>
+<!-- Reviews — only shown when reviews exist -->
 <section class="section container" id="reviews">
   <div class="reviews-wrap">
-
     <div class="reviews-header">
-      <h2><?= $reviewCount > 0 ? $reviewCount . ' Review' . ($reviewCount !== 1 ? 's' : '') : 'Reviews' ?></h2>
-      <?php if ($reviewCount > 0): ?>
-        <div class="rating-bar">
-          <span class="stars-display stars-lg"><?= str_repeat('★', round($avgRating)) . str_repeat('☆', 5 - round($avgRating)) ?></span>
-          <span><?= number_format($avgRating, 1) ?> out of 5</span>
-        </div>
-      <?php endif; ?>
-    </div>
-
-    <?php if ($reviews): ?>
-      <div class="review-list">
-        <?php foreach ($reviews as $r): ?>
-          <div class="review-card">
-            <div class="review-meta">
-              <strong><?= h($r['name']) ?></strong>
-              <span class="stars-display"><?= str_repeat('★', (int)$r['rating']) . str_repeat('☆', 5 - (int)$r['rating']) ?></span>
-              <span class="review-date"><?= date('F j, Y', strtotime($r['created_at'])) ?></span>
-            </div>
-            <?php if ($r['body']): ?><p><?= h($r['body']) ?></p><?php endif; ?>
-          </div>
-        <?php endforeach; ?>
+      <h2><?= $reviewCount ?> Review<?= $reviewCount !== 1 ? 's' : '' ?></h2>
+      <div class="rating-bar">
+        <span class="stars-display stars-lg"><?= str_repeat('★', round($avgRating)) . str_repeat('☆', 5 - round($avgRating)) ?></span>
+        <span><?= number_format($avgRating, 1) ?> out of 5</span>
       </div>
-    <?php else: ?>
-      <p class="review-empty">No reviews yet.</p>
-    <?php endif; ?>
-
+    </div>
+    <div class="review-list">
+      <?php foreach ($reviews as $r): ?>
+        <div class="review-card">
+          <div class="review-meta">
+            <strong><?= h($r['name']) ?></strong>
+            <span class="stars-display"><?= str_repeat('★', (int)$r['rating']) . str_repeat('☆', 5 - (int)$r['rating']) ?></span>
+            <span class="review-date"><?= date('F j, Y', strtotime($r['created_at'])) ?></span>
+          </div>
+          <?php if ($r['body']): ?><p><?= h($r['body']) ?></p><?php endif; ?>
+        </div>
+      <?php endforeach; ?>
+    </div>
   </div>
 </section>
+<?php endif; ?>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
