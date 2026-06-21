@@ -173,6 +173,16 @@ main { padding-top: 68px; }
 .cta-band { text-align: center; padding: 5rem 1.5rem; background: radial-gradient(ellipse 70% 100% at 50% 100%, rgba(245,158,11,0.15), transparent); }
 .cta-band h2 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 1.6rem; }
 
+/* ---------- Audience strip ---------- */
+.audience-strip { background: var(--bg-soft); }
+.audience-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 2rem; }
+.audience-card { display: flex; flex-direction: column; gap: .6rem; padding: 2rem 1.5rem; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; text-decoration: none; color: var(--text); transition: border-color .2s, transform .2s; }
+.audience-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+.audience-icon { font-size: 2.2rem; }
+.audience-card h3 { font-family: var(--font-display); font-size: 1rem; color: var(--accent); margin: 0; }
+.audience-card p { font-size: .9rem; color: var(--text-dim); line-height: 1.55; margin: 0; flex: 1; }
+.audience-link { font-size: .85rem; color: var(--accent); font-weight: 600; margin-top: .25rem; }
+
 /* ---------- Page hero ---------- */
 .page-hero { padding: 4.5rem 0 3rem; background: linear-gradient(180deg, var(--bg-soft), var(--bg)); border-bottom: 1px solid var(--border); }
 .page-hero h1 { font-family: var(--font-display); font-size: 2.2rem; }
@@ -468,6 +478,7 @@ main { padding-top: 68px; }
   .cat-strip-tile:nth-child(even) { border-right: none; }
   .nav-hamburger { display: flex; }
   .nav-search { display: none; }
+  .audience-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ---------- Blog / Learn listing ---------- */

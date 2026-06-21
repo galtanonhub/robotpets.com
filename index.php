@@ -145,11 +145,38 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<section class="cta-band">
+<!-- Who is this for -->
+<section class="section audience-strip">
   <div class="container">
-    <h2>Not sure where to start?</h2>
-    <p style="color:var(--text-dim);margin:.75rem 0 1.8rem;">Answer 4 quick questions and we'll match you with the right companion.</p>
-    <a href="/find-my-pet.php" class="btn btn-primary btn-lg">Take the Pet Finder Quiz →</a>
+    <div class="section-head">
+      <h2>Who Are Robotic Pets For?</h2>
+    </div>
+    <div class="audience-grid">
+      <a href="/for-seniors.php" class="audience-card">
+        <span class="audience-icon">🧓</span>
+        <h3>Seniors &amp; Caregivers</h3>
+        <p>Calm, comforting companions that ease loneliness and anxiety — no care required.</p>
+        <span class="audience-link">Learn more →</span>
+      </a>
+      <a href="/for-kids.php" class="audience-card">
+        <span class="audience-icon">👧</span>
+        <h3>Kids &amp; Families</h3>
+        <p>Safe, durable, and endlessly fun — perfect for teaching empathy and responsibility.</p>
+        <span class="audience-link">Learn more →</span>
+      </a>
+      <a href="/for-allergies.php" class="audience-card">
+        <span class="audience-icon">🌿</span>
+        <h3>Allergy Sufferers</h3>
+        <p>All the joy of a real pet with zero fur, dander, or sneezing.</p>
+        <span class="audience-link">Learn more →</span>
+      </a>
+      <a href="/for-gifts.php" class="audience-card">
+        <span class="audience-icon">🎁</span>
+        <h3>Gift Buyers</h3>
+        <p>A truly unique gift they'll never forget. We'll help you find the perfect match.</p>
+        <span class="audience-link">Learn more →</span>
+      </a>
+    </div>
   </div>
 </section>
 
