@@ -33,7 +33,11 @@ include __DIR__ . '/includes/admin-header.php';
           <td class="thumb-cell">
             <?php if (!empty($p['image'])): ?><img src="<?= h($p['image']) ?>" alt="" class="thumb"><?php else: ?><span class="thumb thumb-empty">🤖</span><?php endif; ?>
           </td>
-          <td><strong><?= h($p['name']) ?></strong><?php if ($p['featured']): ?> <span class="tag">featured</span><?php endif; ?></td>
+          <td>
+            <strong><?= h($p['name']) ?></strong>
+            <?php if (!empty($p['is_hero'])): ?> <span class="tag" style="background:var(--accent);color:#000;">hero</span><?php endif; ?>
+            <?php if ($p['featured']): ?> <span class="tag">featured</span><?php endif; ?>
+          </td>
           <td><?= h($p['sku'] ?: '—') ?></td>
           <td><?= h($p['category_name'] ?: '—') ?></td>
           <td><?= money($p['price']) ?></td>
