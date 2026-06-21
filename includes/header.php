@@ -60,7 +60,60 @@
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
         <span class="cart-count" id="cartCount"><?= cart_count() ?></span>
       </a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 </header>
+
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<nav class="mobile-drawer" id="mobileDrawer" aria-label="Mobile navigation">
+  <div class="mobile-drawer-head">
+    <a href="/" class="logo">ROBOT<span>PETS</span></a>
+    <button class="mobile-drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
+  </div>
+  <div class="mobile-drawer-body">
+    <a href="/" class="mobile-nav-link">Home</a>
+
+    <p class="mobile-nav-section">Shop</p>
+    <a href="/shop.php" class="mobile-nav-sub">All Products</a>
+    <a href="/shop.php?category=robot-dogs" class="mobile-nav-sub">Robot Dogs</a>
+    <a href="/shop.php?category=robot-cats" class="mobile-nav-sub">Robot Cats</a>
+    <a href="/shop.php?category=robot-birds-exotics" class="mobile-nav-sub">Birds &amp; Exotics</a>
+    <a href="/shop.php?category=accessories-parts" class="mobile-nav-sub">Accessories</a>
+
+    <p class="mobile-nav-section">Who It's For</p>
+    <a href="/for-seniors.php" class="mobile-nav-sub">Seniors &amp; Caregivers</a>
+    <a href="/for-kids.php" class="mobile-nav-sub">Kids &amp; Families</a>
+    <a href="/for-allergies.php" class="mobile-nav-sub">Allergy Sufferers</a>
+    <a href="/for-gifts.php" class="mobile-nav-sub">Gift Buyers</a>
+
+    <p class="mobile-nav-section">Learn</p>
+    <a href="/learn.php" class="mobile-nav-sub">Guides</a>
+    <a href="/blog.php" class="mobile-nav-sub">Blog &amp; News</a>
+
+    <p class="mobile-nav-section">Community</p>
+    <a href="/gallery.php" class="mobile-nav-sub">Owner Gallery</a>
+    <a href="/find-my-pet.php" class="mobile-nav-sub">Pet Finder Quiz</a>
+
+    <a href="/about.php" class="mobile-nav-link">About</a>
+    <a href="/faq.php" class="mobile-nav-link">FAQ</a>
+  </div>
+</nav>
+
+<script>
+(function(){
+  var ham     = document.getElementById('navHamburger');
+  var overlay = document.getElementById('mobileOverlay');
+  var drawer  = document.getElementById('mobileDrawer');
+  var close   = document.getElementById('drawerClose');
+  function open(){ drawer.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow='hidden'; }
+  function shut(){ drawer.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow=''; }
+  ham.addEventListener('click', open);
+  close.addEventListener('click', shut);
+  overlay.addEventListener('click', shut);
+})();
+</script>
+
 <main>
