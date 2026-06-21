@@ -17,6 +17,17 @@ $heroStmt = db()->query(
 );
 $hero = $heroStmt->fetch() ?: ($featured[0] ?? null);
 
+// Side tiles: 2 newest active products, excluding accessories and the hero
+$heroId = $hero ? (int)$hero['id'] : 0;
+$sideStmt = db()->prepare(
+    "SELECT p.*, c.name AS category_name, c.slug AS category_slug FROM products p
+     LEFT JOIN categories c ON c.id = p.category_id
+     WHERE p.active = 1 AND c.slug != 'accessories-parts' AND p.id != ?
+     ORDER BY p.created_at DESC LIMIT 2"
+);
+$sideStmt->execute([$heroId]);
+$sideTiles = $sideStmt->fetchAll();
+
 $cat_icons = [
     'robot-dogs'          => '🐕',
     'robot-cats'          => '🐈',
@@ -64,8 +75,8 @@ include __DIR__ . '/includes/header.php';
 
     <!-- Side tiles -->
     <div class="hero-side">
-      <?php for ($i = 1; $i <= 2; $i++): ?>
-        <?php if (!empty($featured[$i])): $t = $featured[$i]; ?>
+      <?php for ($i = 0; $i <= 1; $i++): ?>
+        <?php if (!empty($sideTiles[$i])): $t = $sideTiles[$i]; ?>
         <a href="/product.php?slug=<?= h($t['slug']) ?>" class="hero-tile">
           <div class="hero-tile-img">
             <?php if (!empty($t['image'])): ?>
