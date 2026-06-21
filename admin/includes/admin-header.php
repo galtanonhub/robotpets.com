@@ -16,6 +16,7 @@ require_once __DIR__ . '/../../includes/functions.php';
   <nav>
     <a href="/admin/">Dashboard</a>
     <a href="/admin/products.php">Products</a>
+    <a href="/admin/product-audit.php">Audit</a>
     <a href="/admin/categories.php">Categories</a>
     <a href="/admin/orders.php">Orders</a>
     <a href="/admin/posts.php">Posts &amp; Guides</a>

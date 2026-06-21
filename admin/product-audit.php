@@ -102,5 +102,4 @@ foreach ($products as $p) {
   <?php endforeach; ?>
   </tbody>
 </table>
-<p style="margin-top:1.5rem;color:#a8906c;font-size:.85rem">Delete this file when done: <code>admin/product-audit.php</code></p>
 </body></html>
