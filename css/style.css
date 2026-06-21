@@ -480,7 +480,7 @@ main { padding-top: 68px; }
   .cat-strip-tile:nth-child(even) { border-right: none; }
   .nav-hamburger { display: flex; }
   .nav-search { display: none; }
-  .audience-grid { grid-template-columns: repeat(2, 1fr); }
+  .audience-grid { grid-template-columns: 1fr; }
 }
 
 /* ---------- Blog / Learn listing ---------- */
