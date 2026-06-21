@@ -16,9 +16,27 @@
     <a href="/" class="logo">ROBOT<span>PETS</span></a>
     <div class="nav-links">
       <a href="/">Home</a>
-      <a href="/shop.php">Shop</a>
-      <a href="/shop.php?category=robot-dogs">Dogs</a>
-      <a href="/shop.php?category=robot-cats">Cats</a>
+      <div class="nav-dropdown">
+        <a href="/shop.php" class="nav-drop-trigger">Shop ▾</a>
+        <div class="nav-drop-menu">
+          <a href="/shop.php">All Products</a>
+          <a href="/shop.php?category=robot-dogs">Robot Dogs</a>
+          <a href="/shop.php?category=robot-cats">Robot Cats</a>
+          <a href="/shop.php?category=robot-birds-exotics">Birds &amp; Exotics</a>
+          <a href="/shop.php?category=accessories-parts">Accessories</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="/about.php" class="nav-drop-trigger">Who It's For ▾</a>
+        <div class="nav-drop-menu">
+          <a href="/for-seniors.php">Seniors &amp; Caregivers</a>
+          <a href="/for-kids.php">Kids &amp; Families</a>
+          <a href="/for-allergies.php">Allergy Sufferers</a>
+          <a href="/for-gifts.php">Gift Buyers</a>
+        </div>
+      </div>
+      <a href="/about.php">About</a>
+      <a href="/faq.php">FAQ</a>
     </div>
     <div class="nav-actions">
       <form class="nav-search" action="/shop.php" method="get">
