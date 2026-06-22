@@ -23,7 +23,7 @@ $products = $stmt->fetchAll();
 $categories = db()->query('SELECT * FROM categories ORDER BY name')->fetchAll();
 
 $title = 'Shop';
-$description = 'Browse our full collection of robotic pets — robot dogs, cats, birds, exotic companions and accessories. Free shipping on every order.';
+$description = 'Browse our full collection of robotic pets — robot dogs, cats, birds, exotic companions and accessories. Lifelike companions with no feeding, fur, or vet bills.';
 include __DIR__ . '/includes/header.php';
 ?>
 
