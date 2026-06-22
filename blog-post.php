@@ -13,6 +13,21 @@ $title       = $post['title'];
 $description = $post['excerpt'] ? mb_substr(strip_tags($post['excerpt']), 0, 155) : mb_substr(strip_tags($post['body'] ?? ''), 0, 155);
 $og_image    = $post['image'] ?: null;
 $canonical   = SITE_URL . '/blog-post.php?slug=' . urlencode($post['slug']);
+$_pub        = $post['published_at'] ?: $post['created_at'];
+$_img        = !empty($post['image']) ? (strncmp($post['image'], 'http', 4) === 0 ? $post['image'] : SITE_URL . $post['image']) : null;
+$_ld = [
+    '@context'         => 'https://schema.org',
+    '@type'            => 'BlogPosting',
+    'headline'         => $post['title'],
+    'description'      => strip_tags($post['excerpt'] ?: mb_substr(strip_tags($post['body'] ?? ''), 0, 200)),
+    'datePublished'    => date('c', strtotime($_pub)),
+    'dateModified'     => date('c', strtotime($_pub)),
+    'author'           => ['@type' => 'Organization', 'name' => 'RobotPets'],
+    'publisher'        => ['@type' => 'Organization', 'name' => 'RobotPets', 'url' => SITE_URL],
+    'mainEntityOfPage' => $canonical,
+];
+if ($_img) $_ld['image'] = $_img;
+$json_ld = json_encode($_ld, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 include __DIR__ . '/includes/header.php';
 ?>
 

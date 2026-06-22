@@ -52,14 +52,15 @@ $cat_icons = [
 ];
 
 $title       = 'RobotPets — Companions of the Future';
-$description = 'Discover lifelike robotic companions at RobotPets — robot dogs, cats, birds and more. No vet bills, no allergies, free shipping on every order.';
-$json_ld     = json_encode([
-    '@context'    => 'https://schema.org',
-    '@type'       => 'Organization',
-    'name'        => 'RobotPets',
-    'url'         => SITE_URL,
-    'description' => $description,
-], JSON_UNESCAPED_SLASHES);
+$description = 'Discover lifelike robotic companions at RobotPets — robot dogs, cats, birds and more. No vet bills, no allergies, no maintenance — just companionship.';
+
+// Latest guides & blog posts for the homepage content section
+$latestContent = db()->query(
+    "SELECT title, slug, excerpt, image, type FROM posts WHERE active = 1
+     ORDER BY COALESCE(published_at, created_at) DESC LIMIT 6"
+)->fetchAll();
+
+// Organization + WebSite schema is now emitted site-wide in header.php
 
 include __DIR__ . '/includes/header.php';
 ?>
@@ -248,5 +249,34 @@ include __DIR__ . '/includes/header.php';
     </a>
   </div>
 </section>
+
+<!-- Latest guides & blog -->
+<?php if ($latestContent): ?>
+<section class="section container">
+  <div class="section-head">
+    <h2>Guides &amp; Stories</h2>
+    <a href="/learn.php" class="link-arrow">All guides →</a>
+  </div>
+  <div class="post-grid">
+    <?php foreach ($latestContent as $p):
+      $isGuide = $p['type'] === 'guide';
+      $url = ($isGuide ? '/guide.php' : '/blog-post.php') . '?slug=' . urlencode($p['slug']);
+    ?>
+      <a href="<?= h($url) ?>" class="post-card">
+        <?php if ($p['image']): ?>
+          <div class="post-card-image"><img src="<?= h($p['image']) ?>" alt="<?= h($p['title']) ?>" loading="lazy"></div>
+        <?php else: ?>
+          <div class="post-card-image post-card-placeholder"><?= $isGuide ? '📖' : '📰' ?></div>
+        <?php endif; ?>
+        <div class="post-card-body">
+          <span class="post-type-tag <?= $isGuide ? 'post-type-guide' : '' ?>"><?= $isGuide ? 'Guide' : 'Blog' ?></span>
+          <h2><?= h($p['title']) ?></h2>
+          <?php if ($p['excerpt']): ?><p><?= h($p['excerpt']) ?></p><?php endif; ?>
+        </div>
+      </a>
+    <?php endforeach; ?>
+  </div>
+</section>
+<?php endif; ?>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>

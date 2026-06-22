@@ -27,6 +27,30 @@ $_seo_type   = $og_type ?? 'website';
   <?php if (!empty($json_ld)): ?>
   <script type="application/ld+json"><?= $json_ld ?></script>
   <?php endif; ?>
+  <script type="application/ld+json"><?= json_encode([
+    '@context' => 'https://schema.org',
+    '@graph'   => [
+      [
+        '@type'       => 'Organization',
+        '@id'         => SITE_URL . '/#organization',
+        'name'        => 'RobotPets',
+        'url'         => SITE_URL . '/',
+        'description' => 'Lifelike robotic and AI companion pets — robot cats, dogs, birds and more.',
+      ],
+      [
+        '@type'           => 'WebSite',
+        '@id'             => SITE_URL . '/#website',
+        'name'            => 'RobotPets',
+        'url'             => SITE_URL . '/',
+        'publisher'       => ['@id' => SITE_URL . '/#organization'],
+        'potentialAction' => [
+          '@type'       => 'SearchAction',
+          'target'      => ['@type' => 'EntryPoint', 'urlTemplate' => SITE_URL . '/shop.php?q={search_term_string}'],
+          'query-input' => 'required name=search_term_string',
+        ],
+      ],
+    ],
+  ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?></script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
