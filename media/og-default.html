@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  .canvas {
+    width: 1200px; height: 630px; position: relative;
+    background:
+      radial-gradient(ellipse 80% 70% at 50% 120%, rgba(245,158,11,0.28), transparent 60%),
+      linear-gradient(160deg, #0b1020 0%, #131b30 55%, #0b1020 100%);
+    font-family: "Segoe UI", system-ui, sans-serif;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: #fff;
+  }
+  .robot { font-size: 96px; line-height: 1; margin-bottom: 28px; }
+  .logo {
+    font-size: 116px; font-weight: 800; letter-spacing: 6px;
+    text-transform: uppercase;
+  }
+  .logo .pets { color: #f59e0b; }
+  .tagline {
+    margin-top: 26px; font-size: 38px; font-weight: 500; color: #d7def0;
+    letter-spacing: 1px;
+  }
+  .sub {
+    margin-top: 16px; font-size: 26px; font-weight: 400; color: #f59e0b;
+    letter-spacing: 3px; text-transform: uppercase;
+  }
+  .domain {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    font-size: 24px; color: #8b96b3; letter-spacing: 4px; text-transform: uppercase;
+  }
+  .bar {
+    position: absolute; bottom: 0; left: 0; width: 100%; height: 10px;
+    background: linear-gradient(90deg, #f59e0b, #fb923c);
+  }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="robot">🐱</div>
+    <div class="logo">Robot<span class="pets">Pets</span></div>
+    <div class="tagline">Lifelike Robotic Companions</div>
+    <div class="sub">No feeding · No fur · All love</div>
+    <div class="domain">robotpets.com</div>
+    <div class="bar"></div>
+  </div>
+</body>
+</html>

@@ -3,7 +3,7 @@ require_once __DIR__ . '/functions.php';
 $_seo_title  = isset($title) ? h($title) . ' | RobotPets' : 'RobotPets — Companions of the Future';
 $_seo_desc   = h($description ?? 'RobotPets.com — lifelike robotic companions. Robot dogs, cats, birds and more. No feeding, no fur, no vet bills.');
 $_seo_url    = h(($canonical ?? SITE_URL . strtok($_SERVER['REQUEST_URI'], '?')));
-$_seo_image  = h($og_image ?? SITE_URL . '/media/og-default.jpg');
+$_seo_image  = h($og_image ?? SITE_URL . '/media/og-default.png');
 $_seo_type   = $og_type ?? 'website';
 ?>
 <!DOCTYPE html>
