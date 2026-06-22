@@ -2,6 +2,11 @@ Options -Indexes
 
 RewriteEngine On
 
+# Force HTTPS (proxy-safe: also checks X-Forwarded-Proto for cPanel/CDN setups)
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
 # Affiliate redirect: /go/product-slug
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
