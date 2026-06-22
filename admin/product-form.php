@@ -125,7 +125,7 @@ include __DIR__ . '/includes/admin-header.php';
         </select>
       </label>
       <label>Product Image<input type="file" name="image" accept="image/*"></label>
-      <label>Image URL <small style="color:var(--text-dim);font-weight:400;">(paste a URL to use instead of uploading)</small><input type="url" name="image_url" value="<?= h($product['image'] ?? '') ?>" placeholder="https://..."></label>
+      <label>Image URL <small style="color:var(--text-dim);font-weight:400;">(paste a URL to replace the current image)</small><input type="url" name="image_url" value="" placeholder="https://..."></label>
       <?php if (!empty($product['image'])): ?>
         <div class="current-image"><img src="<?= h($product['image']) ?>" alt="Current image"><span>Current image</span></div>
       <?php endif; ?>
