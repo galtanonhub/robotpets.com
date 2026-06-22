@@ -7,6 +7,7 @@ $static = [
     ['/shop.php',         '0.9', 'daily'],
     ['/about.php',        '0.7', 'monthly'],
     ['/faq.php',          '0.7', 'monthly'],
+    ['/disclosure.php',   '0.3', 'yearly'],
     ['/contact.php',      '0.5', 'monthly'],
     ['/blog.php',         '0.8', 'daily'],
     ['/learn.php',        '0.8', 'weekly'],

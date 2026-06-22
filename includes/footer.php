@@ -14,11 +14,16 @@
     </div>
     <div>
       <h4>Support</h4>
-      <a href="/shop.php">All Products</a>
+      <a href="/faq.php">FAQ</a>
+      <a href="/contact.php">Contact</a>
+      <a href="/disclosure.php">Affiliate Disclosure</a>
       <a href="mailto:support@robotpets.com">support@robotpets.com</a>
     </div>
   </div>
-  <div class="footer-bottom">© <?= date('Y') ?> RobotPets.com — All rights reserved.</div>
+  <div class="footer-bottom">
+    <p style="font-size:.8rem;opacity:.75;max-width:720px;margin:0 auto 0.7rem;line-height:1.6;">RobotPets is reader-supported. When you buy through links on our site, we may earn an affiliate commission at no extra cost to you. <a href="/disclosure.php">Learn more</a>.</p>
+    © <?= date('Y') ?> RobotPets.com — All rights reserved.
+  </div>
 </footer>
 <script src="/js/main.js"></script>
 </body>

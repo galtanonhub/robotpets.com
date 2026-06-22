@@ -87,6 +87,7 @@ include __DIR__ . '/includes/header.php';
       <p class="product-description"><?= nl2br(h($product['description'])) ?></p>
       <?php if (!empty($product['affiliate_url'])): ?>
         <a href="/go/<?= h($product['slug']) ?>" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="align-self:flex-start;">Check Price →</a>
+        <p style="font-size:.8rem;color:var(--text-dim);margin-top:.7rem;max-width:440px;">RobotPets may earn a commission from this link, at no extra cost to you. <a href="/disclosure.php" style="color:inherit;text-decoration:underline;">Learn more</a></p>
       <?php else: ?>
         <p class="stock-status" style="color:var(--text-dim);">Availability coming soon</p>
       <?php endif; ?>
