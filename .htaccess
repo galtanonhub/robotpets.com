@@ -1,5 +1,11 @@
 Options -Indexes
 
+# HSTS — instruct browsers to use HTTPS only (ignored when sent over plain HTTP).
+# Starting at 1 day; bump to max-age=31536000 (1 year) once confirmed stable.
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=86400"
+</IfModule>
+
 RewriteEngine On
 
 # Force HTTPS (proxy-safe: also checks X-Forwarded-Proto for cPanel/CDN setups)
