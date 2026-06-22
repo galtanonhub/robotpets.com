@@ -88,6 +88,17 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
+<section class="section container">
+  <div class="quiz-promo">
+    <div class="quiz-promo-text">
+      <p class="hero-kicker">Pet Finder</p>
+      <h2>Not sure which companion is right for you?</h2>
+      <p>Answer 4 quick questions and we'll match you with the perfect robotic pet — whether it's for you, a child, or a senior loved one.</p>
+    </div>
+    <a href="/find-my-pet.php" class="btn btn-primary btn-lg">Take the Quiz →</a>
+  </div>
+</section>
+
 <section class="cta-band">
   <div class="container">
     <h2>Ready to meet your new companion?</h2>

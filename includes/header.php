@@ -30,7 +30,7 @@ $_seo_type   = $og_type ?? 'website';
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css?v=9">
+  <link rel="stylesheet" href="/css/style.css?v=10">
 </head>
 <body>
 <header class="site-header" id="siteHeader">
@@ -48,12 +48,14 @@ $_seo_type   = $og_type ?? 'website';
         </div>
       </div>
       <div class="nav-dropdown">
-        <a href="/about.php" class="nav-drop-trigger">Who It's For ▾</a>
+        <a href="/about.php" class="nav-drop-trigger">About ▾</a>
         <div class="nav-drop-menu">
+          <a href="/about.php">Our Mission</a>
           <a href="/for-seniors.php">Seniors &amp; Caregivers</a>
           <a href="/for-kids.php">Kids &amp; Families</a>
           <a href="/for-allergies.php">Allergy Sufferers</a>
           <a href="/for-gifts.php">Gift Buyers</a>
+          <a href="/find-my-pet.php">Pet Finder Quiz</a>
         </div>
       </div>
       <div class="nav-dropdown">
@@ -63,14 +65,6 @@ $_seo_type   = $og_type ?? 'website';
           <a href="/blog.php">Blog &amp; News</a>
         </div>
       </div>
-      <div class="nav-dropdown">
-        <a href="/gallery.php" class="nav-drop-trigger">Community ▾</a>
-        <div class="nav-drop-menu">
-          <a href="/gallery.php">Owner Gallery</a>
-          <a href="/find-my-pet.php">Pet Finder Quiz</a>
-        </div>
-      </div>
-      <a href="/about.php">About</a>
       <a href="/faq.php">FAQ</a>
     </div>
     <div class="nav-actions">
@@ -99,21 +93,18 @@ $_seo_type   = $og_type ?? 'website';
     <a href="/shop.php?category=robot-birds-exotics" class="mobile-nav-sub">Birds &amp; Exotics</a>
     <a href="/shop.php?category=accessories-parts" class="mobile-nav-sub">Accessories</a>
 
-    <p class="mobile-nav-section">Who It's For</p>
+    <p class="mobile-nav-section">About</p>
+    <a href="/about.php" class="mobile-nav-sub">Our Mission</a>
     <a href="/for-seniors.php" class="mobile-nav-sub">Seniors &amp; Caregivers</a>
     <a href="/for-kids.php" class="mobile-nav-sub">Kids &amp; Families</a>
     <a href="/for-allergies.php" class="mobile-nav-sub">Allergy Sufferers</a>
     <a href="/for-gifts.php" class="mobile-nav-sub">Gift Buyers</a>
+    <a href="/find-my-pet.php" class="mobile-nav-sub">Pet Finder Quiz</a>
 
     <p class="mobile-nav-section">Learn</p>
     <a href="/learn.php" class="mobile-nav-sub">Guides</a>
     <a href="/blog.php" class="mobile-nav-sub">Blog &amp; News</a>
 
-    <p class="mobile-nav-section">Community</p>
-    <a href="/gallery.php" class="mobile-nav-sub">Owner Gallery</a>
-    <a href="/find-my-pet.php" class="mobile-nav-sub">Pet Finder Quiz</a>
-
-    <a href="/about.php" class="mobile-nav-link">About</a>
     <a href="/faq.php" class="mobile-nav-link">FAQ</a>
   </div>
 </nav>

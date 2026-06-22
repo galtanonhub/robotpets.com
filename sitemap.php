@@ -10,7 +10,6 @@ $static = [
     ['/contact.php',      '0.5', 'monthly'],
     ['/blog.php',         '0.8', 'daily'],
     ['/learn.php',        '0.8', 'weekly'],
-    ['/gallery.php',      '0.6', 'weekly'],
     ['/find-my-pet.php',  '0.7', 'monthly'],
     ['/for-seniors.php',  '0.8', 'monthly'],
     ['/for-kids.php',     '0.8', 'monthly'],
