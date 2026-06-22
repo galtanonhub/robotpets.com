@@ -50,7 +50,6 @@ $_seo_type   = $og_type ?? 'website';
       <div class="nav-dropdown">
         <a href="/about.php" class="nav-drop-trigger">About ▾</a>
         <div class="nav-drop-menu">
-          <a href="/about.php">Our Mission</a>
           <a href="/for-seniors.php">Seniors &amp; Caregivers</a>
           <a href="/for-kids.php">Kids &amp; Families</a>
           <a href="/for-allergies.php">Allergy Sufferers</a>
