@@ -33,7 +33,7 @@ $avgRating   = $reviewCount ? array_sum(array_column($reviews, 'rating')) / $rev
 
 
 $title       = $product['name'];
-$description = mb_substr(strip_tags($product['description'] ?? ''), 0, 155) ?: 'Shop ' . $product['name'] . ' at RobotPets — lifelike robotic companion.';
+$description = mb_substr(short_description($product['description'] ?? ''), 0, 155) ?: 'Shop ' . $product['name'] . ' at RobotPets — lifelike robotic companion.';
 $og_image    = !empty($product['image']) ? $product['image'] : null;
 $og_type     = 'product';
 $canonical   = SITE_URL . '/product.php?slug=' . urlencode($product['slug']);
@@ -41,7 +41,7 @@ $json_ld     = json_encode([
     '@context'    => 'https://schema.org',
     '@type'       => 'Product',
     'name'        => $product['name'],
-    'description' => strip_tags($product['description'] ?? ''),
+    'description' => short_description($product['description'] ?? ''),
     'image'       => $product['image'] ?? '',
     'offers'      => [
         '@type'         => 'Offer',
@@ -84,7 +84,7 @@ include __DIR__ . '/includes/header.php';
           <span class="badge badge-sale">Save <?= money((float)$product['compare_at_price'] - (float)$product['price']) ?></span>
         <?php endif; ?>
       </div>
-      <p class="product-description"><?= nl2br(h($product['description'])) ?></p>
+      <p class="product-description"><?= h(short_description($product['description'])) ?></p>
       <?php if (!empty($product['affiliate_url'])): ?>
         <a href="/go/<?= h($product['slug']) ?>" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="align-self:flex-start;">Check Price →</a>
         <p style="font-size:.8rem;color:var(--text-dim);margin-top:.7rem;max-width:440px;">RobotPets may earn a commission from this link, at no extra cost to you. <a href="/disclosure.php" style="color:inherit;text-decoration:underline;">Learn more</a></p>

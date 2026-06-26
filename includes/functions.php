@@ -21,6 +21,25 @@ function slugify(string $name): string
     return trim($slug, '-');
 }
 
+/**
+ * Public product blurb: first paragraph only, with Amazon bullet label
+ * markers (【...】, "Label：", "1 Label:", "LABEL--") stripped out.
+ * Non-destructive — the full description stays in the database.
+ */
+function short_description(string $desc): string
+{
+    $desc = trim($desc);
+    if ($desc === '') return '';
+    $parts = preg_split('/\R\s*\R/u', $desc);
+    $first = $parts[0] ?? $desc;                                         // first paragraph
+    $first = preg_replace('/[【［〔〖][^】］〕〗]*[】］〕〗]/u', '', $first);  // 【...】 labels
+    $first = preg_replace('/^\s*[^：\n]{1,60}：\s*/u', '', $first);       // "Label：" header
+    $first = preg_replace('/^\s*\d*\s*[A-Za-z][A-Za-z &]{1,40}--\s*/u', '', $first); // "LABEL--"
+    $first = preg_replace('/^\s*\d+\s+[A-Za-z][A-Za-z &]{1,40}:\s*/u', '', $first);  // "1 Label:"
+    $first = preg_replace('/\s+/u', ' ', $first);                        // tidy whitespace
+    return trim($first);
+}
+
 // ---------- Image mirroring ----------
 function mirror_image_url(string $url): string
 {

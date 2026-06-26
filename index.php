@@ -74,7 +74,7 @@ include __DIR__ . '/includes/header.php';
       <?php if ($hero): ?>
         <p class="hero-tag"><?= h($hero['category_name'] ?? 'Featured') ?></p>
         <h1>Meet <span class="glow"><?= h($hero['name']) ?></span></h1>
-        <p class="hero-main-desc"><?= h(mb_substr($hero['description'] ?? '', 0, 150)) ?></p>
+        <p class="hero-main-desc"><?= h(mb_substr(short_description($hero['description'] ?? ''), 0, 150)) ?></p>
         <div class="hero-main-btns">
           <a href="/product.php?slug=<?= h($hero['slug']) ?>" class="btn btn-primary btn-lg">Shop Now — <?= money($hero['price']) ?></a>
           <a href="/shop.php" class="btn btn-ghost btn-lg">See All Pets →</a>
@@ -109,7 +109,8 @@ include __DIR__ . '/includes/header.php';
               <span class="hero-tile-badge">Featured</span>
             <?php endif; ?>
             <div class="hero-tile-name"><?= h($t['name']) ?></div>
-            <div class="hero-tile-sub"><?= h(mb_substr($t['description'] ?? '', 0, 65)) ?><?= mb_strlen($t['description'] ?? '') > 65 ? '…' : '' ?></div>
+            <?php $t_desc = short_description($t['description'] ?? ''); ?>
+            <div class="hero-tile-sub"><?= h(mb_substr($t_desc, 0, 65)) ?><?= mb_strlen($t_desc) > 65 ? '…' : '' ?></div>
             <div class="hero-tile-price"><?= money($t['sale_price'] ?: $t['price']) ?></div>
           </div>
           <span class="hero-tile-arrow">›</span>
